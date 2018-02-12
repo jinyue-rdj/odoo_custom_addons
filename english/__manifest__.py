@@ -12,6 +12,11 @@ The base module to manage english words for non-native speakers.
 ================================
 The app uses english sentences to explain the words meaning.
     """,
+    'data': [
+        'security/english_security.xml',
+        'security/ir.model.access.csv',
+        'views/english_views.xml',
+    ],
     'installable': True,
     'application': True,
 }

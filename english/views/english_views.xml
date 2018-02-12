@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
         <!-- Top menu item -->
-        <menuitem id='menu_english' name='English' sequence="120" />
+        <menuitem id='menu_english' name='English' sequence="120" groups="group_english_user" />
         <menuitem name="My English" parent="menu_english" id="menu_english_title" sequence="50" />
 
         <!--view list for EnglishLexicon-->

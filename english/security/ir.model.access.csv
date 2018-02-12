@@ -1,0 +1,3 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+english_lexicon_manager,"EnglishLexicon user",model_english_lexicon,group_english_manager,1,1,1,1
+english_lexicon_explain_manager,"EnglishLexiconExplain user",model_english_lexicon_explain,group_english_manager,1,1,1,1
