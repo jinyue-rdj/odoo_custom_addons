@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Top menu item -->
+        <menuitem id='menu_english' name='English' sequence="120" />
+        <menuitem name="My English" parent="menu_english" id="menu_english_title" sequence="50" />
+
+        <!--view list for EnglishLexicon-->
+        <record id="english_lexicon_view_tree" model="ir.ui.view">
+            <field name="name">english.lexicon.tree</field>
+            <field name="model">english.lexicon</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="word"/>
+                    <field name="america_accent"/>
+                    <field name="british_accent"/>
+                    <field name="chinese_mean"/>
+                    <field name="source_name"/>
+                    <field name="sequence"/>
+                    <field name="is_updated"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="english_lexicon_view_form" model="ir.ui.view">
+            <field name="name">english.lexicon.form</field>
+            <field name="model">english.lexicon</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group string="English Word">
+                            <field name="word"/>
+                        </group>
+                        <group string="Word Pronounce">
+                            <field name='america_accent' />
+                            <field name='british_accent' />
+                        </group>
+                        <group string="Source">
+                            <field name='source_name' />
+                            <field name='sequence' />
+                        </group>
+                        <group string="Voice URL">
+                            <field name='america_voice_url' />
+                            <field name='british_voice_url' />
+                        </group>
+                    </group>
+                    <group string='Chinese Mean'>
+                        <field name='chinese_mean' nolabel='1' placeholder="Write the Chinese Mean..."/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="english_lexicon_view_search" model="ir.ui.view">
+            <field name="name">english.lexicon.search</field>
+            <field name="model">english.lexicon</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="word"/>
+                    <field name="chinese_mean"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="english_lexicon_action" model="ir.actions.act_window">
+            <field name="name">EnglishLexicon</field>
+            <field name="res_model">english.lexicon</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="english_lexicon_view_search"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to create a english lexicon.
+            </p>
+              <p>
+                Alerts are used to warn employee from possible issues concerning the lunch orders.
+                To create a lunch alert you have to define its recurrence, the time interval during which the alert should be executed and the message to display.
+            </p>
+            <p>
+                Example: <br/>
+                - Recurency: Everyday<br/>
+                - Time interval: from 00h00 am to 11h59 pm<br/>
+                - Message: "You must order before 10h30 am"
+              </p>
+            </field>
+        </record>
+
+        <menuitem name="Word List" parent="menu_english_title" id="english_lexicon_menu_tree" action="english_lexicon_action" sequence="1"/>
+</odoo>
