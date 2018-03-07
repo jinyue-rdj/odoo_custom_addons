@@ -8,6 +8,7 @@ class EnglishLexicon(models.Model):
     _description = 'english lexicon'
 
     word = fields.Char(string="Word", required=True, index=True)
+    lexicon_explain_ids = fields.One2many('english.lexicon.explain', 'english_lexicon_id', "Detail")
     america_accent = fields.Char(string="America Accent")
     british_accent = fields.Char(string="British Accent")
     chinese_mean = fields.Text(string="Chinese Mean")

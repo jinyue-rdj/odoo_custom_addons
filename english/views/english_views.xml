@@ -26,26 +26,38 @@
             <field name="model">english.lexicon</field>
             <field name="arch" type="xml">
                 <form>
-                    <group>
-                        <group string="English Word">
-                            <field name="word"/>
+                    <sheet>
+                        <group>
+                            <group string="English Word">
+                                <field name="word"/>
+                            </group>
+                            <group string="Word Pronounce">
+                                <field name='america_accent' />
+                                <field name='british_accent' />
+                            </group>
+                            <group string="Source">
+                                <field name='source_name' />
+                                <field name='sequence' />
+                            </group>
+                            <group string="Voice URL">
+                                <field name='america_voice_url' />
+                                <field name='british_voice_url' />
+                            </group>
                         </group>
-                        <group string="Word Pronounce">
-                            <field name='america_accent' />
-                            <field name='british_accent' />
+                        <group string='Chinese Mean'>
+                            <field name='chinese_mean' nolabel='1' placeholder="Write the Chinese Mean..."/>
                         </group>
-                        <group string="Source">
-                            <field name='source_name' />
-                            <field name='sequence' />
-                        </group>
-                        <group string="Voice URL">
-                            <field name='america_voice_url' />
-                            <field name='british_voice_url' />
-                        </group>
-                    </group>
-                    <group string='Chinese Mean'>
-                        <field name='chinese_mean' nolabel='1' placeholder="Write the Chinese Mean..."/>
-                    </group>
+                        <field name="lexicon_explain_ids">
+                            <tree string="List" editable="bottom">
+                                <field name="order"></field>
+                                <field name="raw_html_mean"></field>
+                                <field name="gram"></field>
+                                <field name="english_mean"></field>
+                                <field name="chinese_mean"></field>
+                                <field name="is_format"></field>
+                            </tree>
+                        </field>
+                    </sheet>
                 </form>
             </field>
         </record>
