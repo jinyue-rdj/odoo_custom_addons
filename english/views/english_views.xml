@@ -96,4 +96,45 @@
         </record>
 
         <menuitem name="Word List" parent="menu_english_title" id="english_lexicon_menu_tree" action="english_lexicon_action" sequence="1"/>
+
+        <!--view list for EnglishLexiconExplain-->
+        <record id="english_lexicon_explain_view_tree" model="ir.ui.view">
+            <field name="name">english.lexicon.explain.tree</field>
+            <field name="model">english.lexicon.explain</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="english_lexicon_id"/>
+                    <field name="order"/>
+                    <field name="raw_html_mean"/>
+                    <field name="gram"/>
+                    <field name="english_mean"/>
+                    <field name="chinese_mean"/>
+                    <field name="is_format"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="english_lexicon_explain_action" model="ir.actions.act_window">
+            <field name="name">EnglishLexiconExplain</field>
+            <field name="res_model">english.lexicon.explain</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to create a english lexicon.
+            </p>
+              <p>
+                Alerts are used to warn employee from possible issues concerning the lunch orders.
+                To create a lunch alert you have to define its recurrence, the time interval during which the alert should be executed and the message to display.
+            </p>
+            <p>
+                Example: <br/>
+                - Recurency: Everyday<br/>
+                - Time interval: from 00h00 am to 11h59 pm<br/>
+                - Message: "You must order before 10h30 am"
+              </p>
+            </field>
+        </record>
+
+        <menuitem name="Word List Detail" parent="menu_english_title" id="english_lexicon_explain_menu_tree" action="english_lexicon_explain_action" sequence="1"/>
+
 </odoo>
