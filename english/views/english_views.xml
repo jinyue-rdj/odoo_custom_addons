@@ -67,7 +67,7 @@
             <field name="model">english.lexicon</field>
             <field name="arch" type="xml">
                 <search string="Search">
-                    <field name="word"/>
+                    <field name="word" filter_domain="['|', ('word', 'ilike', self), ('lexicon_explain_ids.chinese_mean', 'ilike', self)]"/>
                     <field name="chinese_mean"/>
                 </search>
             </field>
