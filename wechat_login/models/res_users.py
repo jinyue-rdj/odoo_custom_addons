@@ -37,7 +37,7 @@ class ResUsers(models.Model):
     @api.model
     def _auth_oauth_validate(self, provider, access_token):
         """ return the validation data corresponding to the access token """
-        wechat_provider_id = request.env.ref("provider_wechat").id
+        wechat_provider_id = request.env.ref("wechat_login.provider_wechat").id
         oauth_provider = self.env['auth.oauth.provider'].browse(provider)
         if oauth_provider.id == wechat_provider_id:
             ir_config_wechat_id = request.env['ir.config_parameter'].sudo().search([('key', '=', 'wechat_login.secret')])
