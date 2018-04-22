@@ -3,7 +3,7 @@
     <data noupdate="1">
         <record id="provider_wechat" model="auth.oauth.provider">
             <field name="name">微信登录</field>
-            <field name="client_id">wx1a6ba151302976ba</field>
+            <field name="client_id">wx</field>
             <field name="auth_endpoint">https://open.weixin.qq.com/connect/oauth2/authorize</field>
             <field name="scope">snsapi_userinfo</field>
             <field name="validation_endpoint">https://api.weixin.qq.com/sns/oauth2/access_token</field>
