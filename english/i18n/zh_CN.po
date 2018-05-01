@@ -1,0 +1,254 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* english
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-30 08:36+0000\n"
+"PO-Revision-Date: 2018-04-30 08:36+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: english
+#: model:ir.actions.act_window,help:english.english_lexicon_action
+#: model:ir.actions.act_window,help:english.english_lexicon_explain_action
+msgid "Alerts are used to warn employee from possible issues concerning the lunch orders.\n"
+"                To create a lunch alert you have to define its recurrence, the time interval during which the alert should be executed and the message to display."
+msgstr "Alerts are used to warn employee from possible issues concerning the lunch orders.\n"
+"                To create a lunch alert you have to define its recurrence, the time interval during which the alert should be executed and the message to display."
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_america_accent
+msgid "America Accent"
+msgstr “美音”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_america_voice_url
+msgid "America URL"
+msgstr “美音地址”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_british_accent
+msgid "British Accent"
+msgstr “英音”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_british_voice_url
+msgid "British URL"
+msgstr “英音地址”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_chinese_mean
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain_chinese_mean
+#: model:ir.ui.view,arch_db:english.english_lexicon_view_form
+msgid "Chinese Mean"
+msgstr “中文含义”
+
+#. module: english
+#: model:ir.actions.act_window,help:english.english_lexicon_action
+#: model:ir.actions.act_window,help:english.english_lexicon_explain_action
+msgid "Click to create a english lexicon."
+msgstr “创建解释”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_create_uid
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain_create_uid
+msgid "Created by"
+msgstr “创建人”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_create_date
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain_create_date
+msgid "Created on"
+msgstr "Created on"
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_lexicon_explain_ids
+msgid "Detail"
+msgstr “明细”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_display_name
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain_display_name
+msgid "Display Name"
+msgstr “显示名称”
+
+#. module: english
+#: model:ir.module.category,name:english.module_english_category
+#: model:ir.ui.menu,name:english.menu_english
+msgid "English"
+msgstr “英文模块”
+
+#. module: english
+#: model:res.groups,name:english.group_english_manager
+msgid "English Manager"
+msgstr “英文模块管理员”
+
+#. module: english
+#: model:res.groups,name:english.group_english_user
+msgid "English User"
+msgstr “英文模块用户”
+
+#. module: english
+#: model:ir.ui.view,arch_db:english.english_lexicon_view_form
+msgid "English Word"
+msgstr “单词”
+
+#. module: english
+#: model:ir.actions.act_window,name:english.english_lexicon_action
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain_english_lexicon_id
+msgid "EnglishLexicon"
+msgstr “英文词典”
+
+#. module: english
+#: model:ir.actions.act_window,name:english.english_lexicon_explain_action
+msgid "EnglishLexiconExplain"
+msgstr “英文解释”
+
+#. module: english
+#: model:ir.actions.act_window,help:english.english_lexicon_action
+#: model:ir.actions.act_window,help:english.english_lexicon_explain_action
+msgid "Example: <br>\n"
+"                - Recurency: Everyday<br>\n"
+"                - Time interval: from 00h00 am to 11h59 pm<br>\n"
+"                - Message: \"You must order before 10h30 am\""
+msgstr "Example: <br>\n"
+"                - Recurency: Everyday<br>\n"
+"                - Time interval: from 00h00 am to 11h59 pm<br>\n"
+"                - Message: \"You must order before 10h30 am\""
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_source_name
+msgid "From"
+msgstr “表单”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain_gram
+msgid "Gram"
+msgstr “词性“
+
+#. module: english
+#: model:ir.module.category,description:english.module_english_category
+msgid "Helps you handle your English word needs, if you are a manager you will be able to create new word."
+msgstr "Helps you handle your English word needs, if you are a manager you will be able to create new word."
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain_raw_html_mean
+msgid "Html Mean"
+msgstr "Html 含义”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain_id
+#: model:ir.model.fields,field_description:english.field_english_lexicon_id
+msgid "ID"
+msgstr "ID"
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain_is_format
+msgid "Is Format"
+msgstr “是否已格式化”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_is_updated
+msgid "Is Updated"
+msgstr “是否更新”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon___last_update
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain___last_update
+msgid "Last Modified on"
+msgstr “上次修改时间”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain_write_uid
+#: model:ir.model.fields,field_description:english.field_english_lexicon_write_uid
+msgid "Last Updated by"
+msgstr “上次更改人”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain_write_date
+#: model:ir.model.fields,field_description:english.field_english_lexicon_write_date
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: english
+#: model:ir.ui.view,arch_db:english.english_lexicon_view_form
+msgid "List"
+msgstr “列表”
+
+#. module: english
+#: model:ir.ui.menu,name:english.menu_english_title
+msgid "My English"
+msgstr “我的英文”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain_order
+msgid "Order"
+msgstr "Order"
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_explain_english_mean
+msgid "Processed Mean"
+msgstr “已处理的含义”
+
+#. module: english
+#: model:ir.ui.view,arch_db:english.english_lexicon_view_search
+msgid "Search"
+msgstr “搜索”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_sequence
+msgid "Sequence"
+msgstr “顺序”
+
+#. module: english
+#: model:ir.ui.view,arch_db:english.english_lexicon_view_form
+msgid "Source"
+msgstr “来源”
+
+#. module: english
+#: model:ir.ui.view,arch_db:english.english_lexicon_view_form
+msgid "Voice URL"
+msgstr “音频地址”
+
+#. module: english
+#: model:ir.model.fields,field_description:english.field_english_lexicon_word
+msgid "Word"
+msgstr “单词”
+
+#. module: english
+#: model:ir.ui.menu,name:english.english_lexicon_menu_tree
+msgid "Word List"
+msgstr “单词列表”
+
+#. module: english
+#: model:ir.ui.menu,name:english.english_lexicon_explain_menu_tree
+msgid "Word List Detail"
+msgstr “单词列表明细”
+
+#. module: english
+#: model:ir.ui.view,arch_db:english.english_lexicon_view_form
+msgid "Word Pronounce"
+msgstr “发音”
+
+#. module: english
+#: model:ir.ui.view,arch_db:english.english_lexicon_view_form
+msgid "Write the Chinese Mean..."
+msgstr "Write the Chinese Mean..."
+
+#. module: english
+#: model:ir.model,name:english.model_english_lexicon
+msgid "english lexicon"
+msgstr “英语词典”
+
+#. module: english
+#: model:ir.model,name:english.model_english_lexicon_explain
+msgid "english lexicon explain"
+msgstr “词典明细”
+
