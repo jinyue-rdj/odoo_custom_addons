@@ -71,7 +71,7 @@ class WechatMiniProgramSession(models.Model):
             if db_openid[0].user_id:
                 return self._gen_3rd_session(openid, db_openid[0].user_id.id)
             else:
-                return False, {"is_get_openid": True, "is_need_account": True, "help_id": db_openid[0].user_id, "message": "openid数据已存在，但缺少用户信息"}
+                return False, {"is_get_openid": True, "is_need_account": True, "help_id": db_openid.id, "message": "openid数据已存在，但缺少用户信息"}
         else:
             new_db_openid = self.create({"open_id": openid, "union_id": union_id, "session_key": session_key})
             return False, {"is_get_openid": True, "is_need_account": True, "help_id": new_db_openid.id, "message": "openid数据已保存，但缺少用户信息"}

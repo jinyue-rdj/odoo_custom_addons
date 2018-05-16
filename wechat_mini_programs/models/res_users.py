@@ -16,12 +16,15 @@ class ResUser(models.Model):
     def create_wechat_mini_user(self, name, mini_program_id):
         values = {"login": name, "name": name, "password": "", 'company_id': 1}
         db_openid = self.env['wechat.mini.program.session'].sudo().search([('id', '=', mini_program_id)])
-        #db_openid = self.env['wechat.mini.program.session'].sudo().browse(mini_program_id)
+        _logger.error("begin")
         if db_openid and db_openid[0].user_id:
+            _logger.error("if")
             return db_openid[0].user_id.id
         else:
+            _logger.error("else")
             user_id = self.sudo().create(values).id
-            db_openid[0].write({"user_id": user_id})
+            _logger.error("ok")
+            db_openid.write({"user_id": user_id})
             return user_id
 
 
