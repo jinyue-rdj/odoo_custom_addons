@@ -12,7 +12,7 @@ _logger = logging.getLogger(__name__)
 class WechatMiniProgram(http.Controller):
 
     @http.route('/web/transfer', type='http', auth="none", sitemap=False)
-    def get_wechat_openid(self,target_url, request_paramters):
+    def get_wechat_openid(self, target_url, request_paramters):
         result = {}
         result['is_success'] = True
         web_target_url = '%s%s' % ('https://wuzffalu.cn.flextronics.com/flexpsappapi/api/', target_url)
@@ -40,7 +40,7 @@ class WechatMiniProgram(http.Controller):
         cr.close()
         return json.dumps(result)
 
-    @http.route('/web/wechat_auth_user',type='http',auth="none", sitemap=False)
+    @http.route('/web/wechat_auth_user', type='http', auth="none", sitemap=False)
     def wechat_auth_user(self, login_name, photo_url, city, gender, help_id, db_name):
         result = {}
         result['is_success'] = True
@@ -48,6 +48,26 @@ class WechatMiniProgram(http.Controller):
         cr = registry.cursor()
         env = api.Environment(cr, SUPERUSER_ID, {})
         user_id = env['res.users'].create_wechat_mini_user(login_name, photo_url, city, gender, help_id)
+        result['user_id'] = user_id
+        cr.commit()
+        cr.close()
+        return json.dumps(result)
+
+    @http.route('/web/exist_user_login', type='http', auth="none", sitemap=False)
+    def exist_user_login(self, login_name, pwd, help_id, db_name):
+        result = {}
+        result['is_success'] = True
+        try:
+            uid = http.request.session.authenticate(db_name, login_name, pwd)
+        except Exception as e:
+            result['is_success'] = False
+            result['message'] = str(e)
+            return json.dumps(result)
+
+        registry = Registry(db_name)
+        cr = registry.cursor()
+        env = api.Environment(cr, SUPERUSER_ID, {})
+        user_id = env['res.users'].update_wechat_mini_userid(uid, help_id)
         result['user_id'] = user_id
         cr.commit()
         cr.close()
