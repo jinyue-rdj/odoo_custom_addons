@@ -39,7 +39,7 @@ class WechatMiniProgramSession(models.Model):
             return True, request_result
 
     @api.model
-    def _gen_3rd_session(self, openid, user_id):
+    def _gen_3rd_session(self, openid, user_id, name, photo_url):
         ir_config_pyjwt_secret_id = self.env['ir.config_parameter'].sudo().search([('key', '=', 'pyjwt_secret')])
         pyjwt_secret = self.env['ir.config_parameter'].sudo().browse(int(ir_config_pyjwt_secret_id))[0].value
         payload = {
@@ -52,7 +52,7 @@ class WechatMiniProgramSession(models.Model):
             }
         }
         token = jwt.encode(payload, pyjwt_secret, algorithm='HS256').decode('utf-8')
-        return True, {"access_token": token, "account_id": user_id, "is_need_account": False, "message": "已生成token"}
+        return True, {"access_token": token, "account_id": user_id, "name": name, "photo_url": photo_url, "is_need_account": False, "message": "已生成token"}
 
     @api.model
     def verify_bearer_token(self, token):
@@ -69,7 +69,7 @@ class WechatMiniProgramSession(models.Model):
         db_openid = self.search([('open_id', '=', openid)])
         if db_openid:
             if db_openid[0].user_id:
-                return self._gen_3rd_session(openid, db_openid[0].user_id.id)
+                return self._gen_3rd_session(openid, db_openid[0].user_id.id, db_openid[0].user_id.name, db_openid[0].user_id.wechat_photo_url)
             else:
                 return False, {"is_get_openid": True, "is_need_account": True, "help_id": db_openid.id, "message": "openid数据已存在，但缺少用户信息"}
         else:
