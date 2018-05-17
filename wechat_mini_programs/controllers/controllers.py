@@ -27,7 +27,6 @@ class WechatMiniProgram(http.Controller):
         result = json.dumps(result)
         return result
 
-
     @http.route('/web/gettoken', type='http', auth="none", sitemap=False)
     def get_openid(self, code, db_name):
         result = {}
@@ -41,14 +40,14 @@ class WechatMiniProgram(http.Controller):
         cr.close()
         return json.dumps(result)
 
-    @http.route('/web/create_user',type='http',auth="none", sitemap=False)
-    def create_user(self, login_name, help_id, db_name):
+    @http.route('/web/wechat_auth_user',type='http',auth="none", sitemap=False)
+    def wechat_auth_user(self, login_name, photo_url, city, gender, help_id, db_name):
         result = {}
         result['is_success'] = True
         registry = Registry(db_name)
         cr = registry.cursor()
         env = api.Environment(cr, SUPERUSER_ID, {})
-        user_id = env['res.users'].create_wechat_mini_user(login_name, help_id)
+        user_id = env['res.users'].create_wechat_mini_user(login_name, photo_url, city, gender, help_id)
         result['user_id'] = user_id
         cr.commit()
         cr.close()
