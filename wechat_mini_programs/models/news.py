@@ -47,3 +47,6 @@ class News(models.Model):
             ])
 
     image_count = fields.Integer(compute='_compute_attached_images_count', string="Number of documents attached")
+
+    def get_news_detail(self, news_id):
+        return self.search([("id", "=", news_id)]).content
