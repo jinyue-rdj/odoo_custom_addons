@@ -36,3 +36,10 @@ class ResUser(models.Model):
         if db_openid:
             db_openid.write({"user_id": user_id})
             return user_id
+
+    @api.model
+    def update_wechat_mini_ad_userid(self, ad_user_id, ad_name, ad_image_url, ad_employee_no, mini_program_id):
+        db_openid = self.env['wechat.mini.program.session'].sudo().search([('id', '=', mini_program_id)])
+        if db_openid:
+            db_openid.write({"ad_user_id": ad_user_id, "ad_name": ad_name, "ad_image_url": ad_image_url, "ad_employee_no": ad_employee_no})
+            return ad_user_id

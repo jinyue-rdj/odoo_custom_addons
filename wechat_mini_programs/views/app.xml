@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_wechat_app_category_list" model="ir.ui.view">
+        <field name="name">wechat app category list</field>
+        <field name="model">wechat.app.category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"></field>
+                <field name="short_code"></field>
+                <field name="order"></field>
+                <field name="slogan"></field>
+                <field name="is_enabled"></field>
+                <field name="thumb_url"></field>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_wechat_app_category_form" model="ir.ui.view">
+        <field name="name">wechat app category form</field>
+        <field name="model">wechat.app.category</field>
+        <field name="arch" type="xml">
+            <form string="Category Form">
+                <group>
+                    <field name="name"></field>
+                    <field name="thumb_url"></field>
+                </group>
+                <group>
+                    <field name="short_code"></field>
+                    <field name="is_enabled"></field>
+                </group>
+                <group>
+                    <field name="order"></field>
+                    <field name="slogan"></field>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="wechat_app_category_action" model="ir.actions.act_window">
+        <field name="name">wechat app category</field>
+        <field name="res_model">wechat.app.category</field>
+        <field name="view_model">tree,form</field>
+    </record>
+
+    <menuitem name="wechat_app_category" parent="wechat_app" id="wechat_app_category_menu_list" action="wechat_app_category_action"></menuitem>
+
+    <record id="view_wechat_app_list" model="ir.ui.view">
+        <field name="name">wechat app list</field>
+        <field name="model">wechat.app</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"></field>
+                <field name="order"></field>
+                <field name="short_code"></field>
+                <field name="wechat_page_url"></field>
+                <field name="is_enabled"></field>
+                <field name="thumb_url"></field>
+                <field name="app_category_id"></field>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_wechat_app_form" model="ir.ui.view">
+        <field name="name">wechat app form</field>
+        <field name="model">wechat.app</field>
+        <field name="arch" type="xml">
+            <form string="Category Form">
+                <group>
+                    <field name="name"></field>
+                    <field name="thumb_url"></field>
+                </group>
+                <group>
+                    <field name="short_code"></field>
+                    <field name="is_enabled"></field>
+                </group>
+                <group>
+                    <field name="order"></field>
+                    <field name="wechat_page_url"></field>
+                </group>
+                <group>
+                    <field name="app_category_id"></field>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="wechat_app_action" model="ir.actions.act_window">
+        <field name="name">wechat app</field>
+        <field name="res_model">wechat.app</field>
+        <field name="view_model">tree,form</field>
+    </record>
+
+    <menuitem name="wechat_app_menu" parent="wechat_app" id="wechat_app_menu_list" action="wechat_app_action"></menuitem>
+
+</odoo>

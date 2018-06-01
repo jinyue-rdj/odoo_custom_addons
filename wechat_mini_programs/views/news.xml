@@ -2,6 +2,7 @@
 <odoo>
     <menuitem id="wechat_program" name="Mini Program" sequence="200"></menuitem>
     <menuitem id="wechat_news" parent="wechat_program" name="News" sequence="60"></menuitem>
+    <menuitem id="wechat_app" parent="wechat_program" name="App" sequence="70"></menuitem>
 
     <record id="view_news_list" model="ir.ui.view">
         <field name="name">news.form</field>

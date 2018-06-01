@@ -14,7 +14,7 @@
 
     'depends': ['base',],
 
-    'data': ['views/news.xml', ],
+    'data': ['views/news.xml', 'views/app.xml'],
     'qweb': [],
     'demo': [],
 }

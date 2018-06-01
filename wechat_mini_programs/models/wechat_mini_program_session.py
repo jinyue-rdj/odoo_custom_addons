@@ -18,6 +18,11 @@ class WechatMiniProgramSession(models.Model):
     session_key = fields.Char(string="session_key", required=True)
     user_id = fields.Many2one("res.users", required=False)
 
+    ad_user_id = fields.Integer(string="AD UserId")
+    ad_employee_no = fields.Char(string="AD EmployeeNo")
+    ad_name = fields.Char(string="AD name")
+    ad_image_url = fields.Char(string="AD Image")
+
     @api.model
     def _get_openid(self, code):
         target_url = "https://api.weixin.qq.com/sns/jscode2session"
@@ -69,7 +74,7 @@ class WechatMiniProgramSession(models.Model):
         db_openid = self.search([('open_id', '=', openid)])
         if db_openid:
             if db_openid[0].user_id:
-                return self._gen_3rd_session(openid, db_openid[0].user_id.id, db_openid[0].user_id.name, db_openid[0].user_id.wechat_photo_url)
+                return self._gen_3rd_session(openid, db_openid[0].user_id.id, db_openid[0].user_id.name, db_openid[0].ad_image_url)
             else:
                 return False, {"is_get_openid": True, "is_need_account": True, "help_id": db_openid.id, "message": "openid数据已存在，但缺少用户信息"}
         else:
@@ -88,4 +93,29 @@ class WechatMiniProgramSession(models.Model):
             if "unionid" in request_result:
                 union_id = request_result["unionid"]
             return self._openid2token(openid, session_key, union_id)
+
+    @api.model
+    def _openid2token_ad(self, openid, session_key, union_id):
+        db_openid = self.search([('open_id', '=', openid)])
+        if db_openid:
+            if db_openid[0].ad_user_id:
+                return self._gen_3rd_session(openid, db_openid[0].ad_user_id, db_openid[0].ad_name, db_openid[0].ad_image_url)
+            else:
+                return False, {"is_get_openid": True, "is_need_account": True, "help_id": db_openid.id, "message": "openid数据已存在，但缺少用户信息"}
+        else:
+            new_db_openid = self.create({"open_id": openid, "union_id": union_id, "session_key": session_key})
+            return False, {"is_get_openid": True, "is_need_account": True, "help_id": new_db_openid.id, "message": "openid数据已保存，但缺少用户信息"}
+
+    @api.model
+    def get_token_ad(self, code):
+        is_success, request_result = self._get_openid(code)
+        if not is_success:
+            return False, {"is_get_openid": False, "message": "获取失败"}
+        else:
+            openid = request_result["openid"]
+            session_key = request_result["session_key"]
+            union_id = ""
+            if "unionid" in request_result:
+                union_id = request_result["unionid"]
+            return self._openid2token_ad(openid, session_key, union_id)
 

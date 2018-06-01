@@ -28,12 +28,15 @@ class WechatMiniProgram(http.Controller):
         return result
 
     @http.route('/web/gettoken', type='http', auth="none", sitemap=False)
-    def get_openid(self, code, db_name):
+    def get_openid(self, code, is_ad, db_name):
         result = {}
         result['is_success'] = True
         cr = Registry(db_name).cursor()
-        env = api.Environment(cr, SUPERUSER_ID,{})
-        is_success, token = env['wechat.mini.program.session'].get_token(code)
+        env = api.Environment(cr, SUPERUSER_ID, {})
+        if is_ad:
+            is_success, token = env['wechat.mini.program.session'].get_token_ad(code)
+        else:
+            is_success, token = env['wechat.mini.program.session'].get_token(code)
         result['token'] = token
         result['is_get_token'] = is_success
         cr.commit()
@@ -73,3 +76,34 @@ class WechatMiniProgram(http.Controller):
         cr.close()
         return json.dumps(result)
 
+    @http.route('/web/exist_ad_user_login', type='http', auth="none", sitemap=False)
+    def exist_ad_user_login(self, login_name, pwd, help_id, db_name):
+        result = {}
+        result['is_success'] = True
+        web_target_url = 'https://wuzffalu.cn.flextronics.com/flexpsappapi/api/UserLoginAndRegister/Login'
+        request_paramters = {'name': login_name, 'pwd': pwd}
+        request_paramters = werkzeug.url_encode(request_paramters)
+        try:
+            request_result = requests.get(web_target_url, params=request_paramters).json()
+            if request_result["IsSuccess"]:
+                uid = request_result["Uid"]
+                ad_employee_no = request_result["LoginName"]
+                ad_name = login_name
+                ad_image_url = request_result["PhotoUrl"]
+
+                registry = Registry(db_name)
+                cr = registry.cursor()
+                env = api.Environment(cr, SUPERUSER_ID, {})
+                ad_user_id = env['res.users'].update_wechat_mini_ad_userid(uid, ad_name, ad_image_url, ad_employee_no, help_id)
+                result['user_id'] = ad_user_id
+                cr.commit()
+                cr.close()
+                return json.dumps(result)
+            else:
+                result['is_success'] = False
+                result['message'] = "login name or password is error"
+                return json.dumps(result)
+        except Exception as e:
+            result['is_success'] = False
+            result['message'] = str(e)
+            return json.dumps(result)
