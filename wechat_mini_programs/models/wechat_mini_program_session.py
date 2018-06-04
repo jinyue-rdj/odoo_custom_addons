@@ -99,7 +99,7 @@ class WechatMiniProgramSession(models.Model):
         db_openid = self.search([('open_id', '=', openid)])
         if db_openid:
             if db_openid[0].ad_user_id:
-                return self._gen_3rd_session(openid, db_openid[0].ad_user_id, db_openid[0].ad_name, db_openid[0].ad_image_url)
+                return self._gen_3rd_session(openid, db_openid[0].ad_user_id, db_openid[0].ad_employee_no, db_openid[0].ad_image_url)
             else:
                 return False, {"is_get_openid": True, "is_need_account": True, "help_id": db_openid.id, "message": "openid数据已存在，但缺少用户信息"}
         else:
