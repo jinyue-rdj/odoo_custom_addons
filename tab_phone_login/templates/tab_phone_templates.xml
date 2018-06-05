@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="tab_phone_login_frontend" inherit_id="web.assets_frontend" name="Tab Phone Login Assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/tab_phone_login/static/src/js/tab_phone_code_login.js"/>
+        </xpath>
+    </template>
+
+    <template id="phone_layout"  name="Phone Layout">
+        <form class="oe_login_form" role="form" t-attf-action="/web/phonelogin" method="post" onsubmit="this.action = this.action + location.hash">
+               <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+               <div class="form-group field-db" t-if="databases and len(databases) &gt; 1">
+                    <label for="phone_db" class="control-label">Database</label>
+                    <div class="input-group">
+                        <input type="text" name="phone_db" t-att-value="request.db" id="phone_db" class="form-control" required="required" readonly="readonly"/>
+                        <span class="input-group-btn">
+                          <a href="/web/database/selector" class="btn btn-default">Select <i class="fa fa-database"></i></a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group field-login">
+                    <label for="phone" class="control-label">PhoneNo</label>
+                    <input type="text" name="phone" t-att-value="login" id="phone" class="form-control" required="required" autofocus="autofocus" autocapitalize="off"/>
+                </div>
+
+                <div class="form-group field-db" widget="tabPhoneLogin">
+                    <label for="checkCode" class="control-label">CheckCode</label>
+                    <div class="input-group">
+                        <input type="text" name="checkCode" id="checkCode" class="form-control" required="required"/>
+                        <span  class="input-group-btn" >
+                            <button id="CheckCodeId" class="btn btn-primary" type="button" data-placement="left" title="">Send Code</button>
+                        </span>
+                    </div>
+                </div>
+
+                <p class="alert alert-danger" t-if="error">
+                    <t t-esc="phone_error"/>
+                </p>
+                <p class="alert alert-success" t-if="message">
+                    <t t-esc="phone_message"/>
+                </p>
+
+                <div class="clearfix oe_login_buttons">
+                    <button id="btnSubmit" type="submit" class="btn btn-primary">Log in</button>
+                </div>
+        </form>
+    </template>
+
+    <template id="tab_layout">
+        <div class="container">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#A" data-toggle="tab">Login</a>
+                    </li>
+                    <li>
+                        <a href="#B" data-toggle="tab">Phone</a>
+                    </li>
+                </ul>
+                <br/>
+                <div class="tab-content col-md-6">
+                    <div class="tab-pane active" id="A">
+                        <t t-raw="0"><div>123</div></t>
+                    </div>
+                    <div class="tab-pane" id="B">
+                       <t t-call="tab_phone_login.phone_layout">
+                       </t>
+                    </div>
+                </div>
+            </div>
+    </template>
+
+    <template id="login_layout" inherit_id="web.login_layout" name="Login Layout Inherit">
+   		<xpath expr="//div[hasclass('o_database_list')]" position="replace">
+            <div class="col-md-6 col-md-offset-3 o_database_list">
+                    <div class="text-center">
+                        <img t-attf-src="/web/binary/company_logo{{ '?dbname='+db if db else '' }}"/>
+                    </div>
+                    <t t-call="tab_phone_login.tab_layout">
+                        <t t-raw="0"></t>
+                    </t>
+                    <div class="text-center" t-if="not disable_footer">
+                        <t t-if="not disable_database_manager">
+                            <a class="" href="/web/database/manager">Manage Databases</a> |
+                        </t>
+                        <a href="https://www.odoo.com" target="_blank">Powered by <span>Odoo</span></a>
+                    </div>
+            </div>
+   		</xpath>
+   	</template>
+
+</odoo>
