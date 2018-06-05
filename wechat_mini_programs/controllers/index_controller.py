@@ -52,7 +52,7 @@ class IndexController(http.Controller):
         result = {}
         result['is_success'] = True
         offset = (int(page_index)-1) * int(page_size)
-        sql = """SELECT A.id, A.title, A.is_banner, A.category_id, to_char(A.create_date,'yyyy-mm-dd') create_date,B.Name,C.url
+        sql = """SELECT A.id, A.title, A.is_banner, A.category_id, to_char(A.create_date,'yyyy-mm-dd') create_date,B.Name,C.url,C.Id
                       FROM news A left join news_category B 
                       on A.category_id = B.id 
                       left join ir_attachment C 
