@@ -8,7 +8,8 @@ var ajax = require('web.ajax');
 var _t = core._t;
 var QWeb = core.qweb;
 
-FormController.include({
+FormController.include
+({
 	renderButtons: function(node)
 	{
 	    this._super.apply(this, node);
@@ -30,15 +31,6 @@ FormController.include({
                  }
              }
         });
-
-         /*   if(this.modelName == "ebilling.request.header")
-            {
-                var record = this.model.get(this.handle, {raw: true});
-                if(record.data.state !='draft')
-                {
-                   this.$buttons.find('.o_form_button_edit').attr('disabled', true);
-                }
-            }*/
 	}
 });
 

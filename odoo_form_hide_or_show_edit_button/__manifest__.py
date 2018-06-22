@@ -25,6 +25,7 @@
     # always loaded
     'data': [
         'views/templates.xml',
+        'views/model_state_group_permission.xml',
     ],
     # only loaded in demonstration mode
     'demo': [],

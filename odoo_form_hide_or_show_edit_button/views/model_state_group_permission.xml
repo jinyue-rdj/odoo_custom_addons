@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="model_state_group_permission_tree_view" model="ir.ui.view">
+            <field name="name">model_state_group_permission list</field>
+            <field name="type">tree</field>
+            <field name="model">model.state.group.permission</field>
+            <field name="arch" type="xml">
+                <tree string="Workflow">
+                    <field name="group_id"/>
+                    <field name="model_name"/>
+                    <field name="state"/>
+                    <field name="perm_read"/>
+                    <field name="perm_write"/>
+                    <field name="perm_create"/>
+                    <field name="perm_unlink"/>
+                    <field name="remark"/>
+                </tree>
+            </field>
+        </record>
+        <record id="model_state_group_permission_form_view" model="ir.ui.view">
+            <field name="name">model_state_group_permission Form</field>
+            <field name="type">form</field>
+            <field name="model">model.state.group.permission</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="group_id"/>
+                                <field name="model_name"/>
+                            </group>
+                            <group>
+                                <field name="state"/>
+                                <field name="perm_read"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="perm_write"/>
+                                <field name="perm_create"/>
+                            </group>
+                            <group>
+                                <field name="perm_unlink"/>
+                            </group>
+                        </group>
+                        <label for='remark'/>
+                        <field name='remark'/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="model_state_group_permission_action" model="ir.actions.act_window">
+            <field name="name">model_state_group_permission action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">model.state.group.permission</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Configure permission for model by state</p>
+            </field>
+        </record>
+
+        <menuitem id="menu_model_state_group_permission" name="Model State Permission" parent="base.menu_custom" groups="base.group_no_one"/>
+        <menuitem id="sub_menu_model_state_group_permission" name="configure"
+                  parent="menu_model_state_group_permission" action="model_state_group_permission_action"/>
+    </data>
+</openerp>
