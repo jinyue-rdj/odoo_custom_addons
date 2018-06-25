@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- Workflow -->
+        <!-- 添加header标签用来显示workflow中的按钮-->
+        <!-- 首先指明button的type为workflow类型 -->
+        <!-- name 对应于workflow中的signal-->
+        <!-- states 属性用来控制button显示隐藏，例如states="init"，当state属性为init时，这个button显示，否则不显示 -->
+        <!-- 右上角 进度显示。注意在此处已经使用的state属性，所以在接下来的tree标签里面就不能再次声明<field name="state"/>了如果再次声明此处的进度显示便会失去作用 -->
+        <record id="workflow_ebilling_request_form_view" model="ir.ui.view">
+            <field name="name">Workflow e-Billing</field>
+            <field name="type">form</field>
+            <field name="model">ebilling.request.header</field>
+            <field name="arch" type="xml">
+                <form string="Workflow单">
+                    <header>
+                        <button name="workflow_submit" states="draft" string="Submit" type="workflow" class="oe_highlight"/>
+                        <button name="workflow_approving" states="submit" string="Approving" type="workflow" class="oe_highlight"/>
+                        <button name="workflow_completed" states="approving" string="completed" type="workflow" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="submit,approving,completed"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="project"/>
+                                <field name="bp_code"/>
+                            </group>
+                            <group>
+                                <field name="po_no"/>
+                                <field name="company_billing"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="company"/>
+                                <field name="nature_of_billing"/>
+                            </group>
+                            <group>
+                                <field name="currency"/>
+                                <field name="remark"/>
+                            </group>
+                        </group>
+                        <field name='detail_ids'>
+                            <tree string='List' editable='bottom'>
+                                <field name='part_number'/>
+                                <field name='qty' />
+                                <field name='unit_price'/>
+                                <field name='amount' readonly="1"/>
+                            </tree>
+                        </field>
+                        <group class='oe_subtotal_footer oe_right'>
+                            <field name='total_amount' widget='monetary' />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- tree(list)视图 -->
+        <record id="workflow_ebilling_request_tree_view" model="ir.ui.view">
+            <field name="name">ebilling request list</field>
+            <field name="type">tree</field>
+            <field name="model">ebilling.request.header</field>
+            <field name="arch" type="xml">
+                <tree string="Workflow">
+                    <field name="request_no"/>
+                    <field name="project"/>
+                    <field name="bp_code"/>
+                    <field name="po_no"/>
+                    <field name="company_billing"/>
+                    <field name="company"/>
+                    <field name="nature_of_billing"/>
+                    <field name="currency"/>
+                    <field name="total_amount"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="workflow_ebilling_request_action" model="ir.actions.act_window">
+            <field name="name">Workflow</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ebilling.request.header</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建Workflow单</p>
+            </field>
+        </record>
+
+        <!-- 菜单 -->
+        <menuitem id="workflow_ebilling_request_main_menu" name="e-Billing"/>
+        <menuitem id="workflow_ebilling_request_sub_menu" name="e-Billing Request" parent="workflow_ebilling_request_main_menu"/>
+        <menuitem id="workflow_demo_item_menu" name="New Case" parent="workflow_ebilling_request_sub_menu"
+                  action="workflow_ebilling_request_action" sequence="1"/>
+    </data>
+</openerp>
