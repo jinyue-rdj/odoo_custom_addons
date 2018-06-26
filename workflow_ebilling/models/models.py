@@ -30,7 +30,7 @@ class BillingRequest(models.Model):
         remark = fields.Text()
         total_amount = fields.Float(compute="_compute_total_amount", string="Total Amount", store=False)
         detail_ids = fields.One2many("ebilling.request.detail", "header_id")
-        state = fields.Selection(WORKFLOW_STATE_SELECTION, default="draft", readonly=True)
+        state = fields.Selection(WORKFLOW_STATE_SELECTION, default="draft", readonly=False, groups="english.group_english_manager")
 
         @api.multi
         @api.depends('detail_ids.amount')
@@ -54,19 +54,35 @@ class BillingRequest(models.Model):
         @api.multi
         def workflow_approving(self):
                 self.state = 'approving'
-                _logger.info("approving")
-                return True
+                action = self.get_tree_view()
+                return action
 
         @api.multi
         def workflow_completed(self):
                 self.state = 'completed'
-                _logger.info("completed")
-                return True
+                action = self.get_tree_view()
+                return action
 
         @api.multi
         def workflow_cancel(self):
                 self.state = 'cancel'
                 return True
+
+        def get_tree_view(self):
+                action_ref = self.env.ref('workflow_ebilling.workflow_ebilling_request_action', False)
+                action = action_ref.read()[0]
+                if action.pop('view_type', 'form') != 'form':
+                        return action
+
+                if 'view_mode' in action:
+                        action['view_mode'] = ','.join(
+                                mode if mode != 'tree' else 'list'
+                                for mode in action['view_mode'].split(','))
+                action['views'] = [
+                        [id, mode if mode != 'tree' else 'list']
+                        for id, mode in action['views']
+                ]
+                return action
 
 
 class BillingRequestDetail(models.Model):
