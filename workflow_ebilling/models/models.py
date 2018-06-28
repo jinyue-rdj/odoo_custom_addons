@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from lxml import etree
 import logging
 
 _logger = logging.getLogger("workflow_ebilling")
@@ -8,7 +9,7 @@ _logger = logging.getLogger("workflow_ebilling")
 
 class BillingRequest(models.Model):
 
-        _inherit = ['workflow.mixin']
+        _inherit = ['workflow.mixin', 'base_state_model.mixin']
         _name = 'ebilling.request.header'
 
         WORKFLOW_STATE_SELECTION = [
@@ -84,6 +85,26 @@ class BillingRequest(models.Model):
                 ]
                 return action
 
+        @api.model
+        def fields_view_get1(self, view_id=None, view_type='form', toolbar=False, submenu=False):
+                res = super(BillingRequest, self).fields_view_get(view_id, view_type, toolbar, submenu)
+                return self._set_state_value_match_to_readonly(res, view_type)
+
+        def _set_state_value_match_to_readonly3(self, res, view_type):
+                editable_fields = ["remark", "project"]
+
+                if view_type == "form":
+                        doc = etree.XML(res["arch"])
+                        for node in doc.xpath("/form/sheet/group/group/field"):
+                                _logger.info("node")
+                                field_name = node.get("name", False)
+                                _logger.info("name:%s", field_name)
+                                if field_name not in editable_fields:
+                                        node.set("modifiers", '{"readonly": true}')
+                        res["arch"] = etree.tostring(doc)
+                        return res
+                else:
+                        return res
 
 class BillingRequestDetail(models.Model):
 

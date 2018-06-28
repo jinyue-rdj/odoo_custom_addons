@@ -29,7 +29,7 @@ class CustomFormEditController(http.Controller):
             result['has_state'] = True
             result['data'] = []
             for item in model_permission_list:
-                result['data'].append({"state": item.state, "is_write": item.perm_write})
+                result['data'].append({"state_value": item.state_value, "is_hide_edit_button": item.is_hide_edit_button})
         return result
 
 

@@ -23,9 +23,9 @@ FormController.include
                  var record = that.model.get(that.handle, {raw: true});
                  for(var i = 0; i< result.length; i++)
                  {
-                     if(result[i].state == record.data.state)
+                     if(result[i].state_value == record.data.state)
                      {
-                          that.$buttons.find('.o_form_button_edit').attr('disabled', !result[i].is_write);
+                          that.$buttons.find('.o_form_button_edit').attr('disabled', result[i].is_hide_edit_button);
                           break;
                      }
                  }
