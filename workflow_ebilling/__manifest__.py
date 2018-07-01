@@ -21,7 +21,8 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ebilling_security.xml',
+        'security/ir.model.access.csv',
         # 声明workflow的相关xml
         'views/workflow_view.xml',
         'views/workflow_demo.xml',
