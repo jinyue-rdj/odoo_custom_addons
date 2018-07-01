@@ -1,16 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "custom_web_changes",
+    'name': "form button and fields control",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Set one parameter to show or hide form edit button.
+        Set some readonly fields in form view and check in orm write function. 
+        """,
 
     'description': """
-        Long description of module's purpose
+        the module has two functions. the first is used for controlling the edit button to be show or hide
+        according to the vale which is set in db.
+        the second is to set some readonly fields for one model when the state field is some special value
     """,
 
-    'author': "My Company",
+    'author': "Huanhuan Guo",
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing

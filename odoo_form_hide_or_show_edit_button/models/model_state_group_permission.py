@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, api, fields
+from odoo import models, api, fields, SUPERUSER_ID
 from lxml import etree
 from odoo.exceptions import AccessError, UserError
 import json
@@ -16,7 +16,7 @@ class ModelStateGroupPermission(models.Model):
     state_value = fields.Char(string="Model State Value", required=True)
     is_active = fields.Boolean(string="Is Active", default=True)
     is_hide_edit_button = fields.Boolean(string="Hide Edit Button", default=True)
-    edit_fields_name = fields.Text(string="Editable fields")
+    readonly_fields_name = fields.Text(string="Readonly fields")
 
 
 class BaseStateModel(models.AbstractModel):
@@ -25,75 +25,74 @@ class BaseStateModel(models.AbstractModel):
 
     @api.multi
     def write(self, values):
-        self._check_write_state(values)
+        if self._uid != SUPERUSER_ID:
+            self._check_write_state(values)
         super(BaseStateModel, self).write(values)
         return True
 
     @api.model
     def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
         res = super(BaseStateModel, self).fields_view_get(view_id, view_type, toolbar, submenu)
-        return self._set_state_value_match_to_readonly(res, view_type)
+        if self._uid != SUPERUSER_ID:
+            return self._set_state_value_match_to_readonly(res, view_type)
+        else:
+            return res
 
     def _check_write_state(self, values):
         if "state" not in self._fields:
             raise UserError("state field not in %s, please add it.", self._name)
+        state_groups_info = self._get_current_user_model_state_group_permission()
+        if not state_groups_info:
+            return True
+        readonly_fields = []
+        for model_state_group in state_groups_info:
+            current_group_readonly_fields = model_state_group.readonly_fields_name.split(",")
+            for field in current_group_readonly_fields:
+                if field in values and field not in readonly_fields:
+                    readonly_fields.append(field)
+        if len(readonly_fields) > 0:
+            raise AccessError("you have no access right to readonly fields:%s", ",".join(readonly_fields))
         return True
 
-    def _set_state_value_match_to_readonly1(self, res, view_type):
-        editable_fields = ["remark", "project"]
-
-        if view_type == "form":
-            doc = etree.XML(res["arch"])
-            for node in doc.xpath("/form/sheet/group/group/field"):
-                field_name = node.get("name", False)
-                _logger.info("name:%s", field_name)
-                if field_name not in editable_fields:
-                    #node.set("modifiers", '{"readonly": true}')
-                    condition = {"readonly": ["!", ("state", "!=", "submit")]}
-                    node.set("modifiers", json.dumps(condition))
-            res["arch"] = etree.tostring(doc)
-            return res
-        else:
-            return res
+    def _get_current_user_model_state_group_permission(self):
+        current_user_gids = self.env.user.groups_id.mapped("id")
+        domain = [('model_name', '=', self._name), ("group_id", "in", current_user_gids), ("is_active", "=", True)]
+        state_groups_info = self.env["model.state.group.permission"].sudo().search(domain)
+        return state_groups_info
 
     def _set_state_value_match_to_readonly(self, res, view_type):
         if view_type != "form":
             return res
-        _logger.info("BB")
-        current_user_gids = self.env.user.groups_id.mapped("id")
-        domain = [('model_name', '=', self._name)]
-        state_groups_info = self.env["model.state.group.permission"].sudo().search(domain)
-        doc = etree.XML(res["arch"])
+        state_groups_info = self._get_current_user_model_state_group_permission()
+        if not state_groups_info:
+            return res
 
         readonly_fields = []
         fiedls_condition = {}
         fiedls_group = {}
+
         for model_state_group in state_groups_info:
-            _logger.info("CC")
-            if model_state_group.group_id.id in current_user_gids:
-                current_group_readonly_fields = model_state_group.edit_fields_name.split(",")
-                readonly_fields = readonly_fields + current_group_readonly_fields
+            current_group_readonly_fields = model_state_group.readonly_fields_name.split(",")
+            group_name = model_state_group.group_id.full_name
 
-                group_name = model_state_group.group_id.full_name
-                _logger.info("group_name:%s", group_name)
-                for field in current_group_readonly_fields:
-                    if field not in fiedls_condition:
-                        fiedls_condition[field] = [("state", "=", model_state_group.state_value)]
-                        fiedls_group[field] = [group_name]
-                    else:
-                        current_condition = fiedls_condition[field]
-                        _logger.info("current_condition:%s", current_condition)
-                        current_condition.insert(0, "|")
-                        current_condition.append(("state", "=", model_state_group.state_value))
+            for field in current_group_readonly_fields:
+                if field not in readonly_fields:
+                    readonly_fields.append(field)
+                if field not in fiedls_condition:
+                    fiedls_condition[field] = [("state", "=", model_state_group.state_value)]
+                    fiedls_group[field] = [group_name]
+                else:
+                    current_condition = fiedls_condition[field]
+                    current_condition.insert(0, "|")
+                    current_condition.append(("state", "=", model_state_group.state_value))
 
-                        current_group = fiedls_group[field]
-                        if group_name not in current_group:
-                            current_group.append(group_name)
-        _logger.info("fiedls_condition:%s", fiedls_condition)
-        _logger.info("fiedls_group:%s", fiedls_group)
-        for node in doc.xpath("/form/sheet/group/group/field"):
-            field_name = node.get("name", False)
-            if field_name in readonly_fields:
+                    current_group = fiedls_group[field]
+                    if group_name not in current_group:
+                        current_group.append(group_name)
+
+        doc = etree.XML(res["arch"])
+        for field_name in readonly_fields:
+            for node in doc.xpath("//field[@name='%s']" % field_name):
                 domain = fiedls_condition[field_name]
                 condition = {"readonly": domain}
                 node.set("modifiers", json.dumps(condition))
