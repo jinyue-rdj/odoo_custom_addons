@@ -51,3 +51,44 @@ class News(models.Model):
     def get_news_detail(self, news_id):
         detail = self.search([("id", "=", news_id)])
         return detail
+
+    def get_list(self):
+        result = {}
+        result['is_success'] = True
+        sql = """SELECT A.id, A.title, A.is_banner, A.category_id, to_char(A.create_date,'yyyy-mm-dd') create_date,B.Name,C.url
+                              FROM news A left join news_category B 
+                              on A.category_id = B.id 
+                              left join ir_attachment C 
+                              on A.id  =  C.res_id 
+                              where A.is_banner  = %s 
+                              and  A.is_publish = true 
+                              and C.res_model='%s' 
+                              order by A.create_date desc
+                              limit %d
+                      """
+        banner_sql = sql % ("true", "news", 5)
+        news_sql = sql % ("false", "news", 10)
+        self.env.cr.execute(banner_sql)
+        result['banner_list'] = self.env.cr.dictfetchall()
+        self.env.cr.execute(news_sql)
+        result['news_list'] = self.env.cr.dictfetchall()
+        return result
+
+    def get_list_page(self, page_index, page_size):
+        result = {}
+        result['is_success'] = True
+        offset = (int(page_index) - 1) * int(page_size)
+        sql = """SELECT A.id, A.title, A.is_banner, A.category_id, to_char(A.create_date,'yyyy-mm-dd') create_date,B.Name,C.url
+                              FROM news A left join news_category B 
+                              on A.category_id = B.id 
+                              left join ir_attachment C 
+                              on A.id  =  C.res_id 
+                              where A.is_publish = true 
+                              and C.res_model='%s' 
+                              order by A.create_date desc
+                              limit %s offset %d
+                      """
+        news_sql = sql % ("news", page_size, offset)
+        self.env.cr.execute(news_sql)
+        result['news_list'] = self.env.cr.dictfetchall()
+        return result
