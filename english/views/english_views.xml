@@ -30,6 +30,7 @@
                         <group>
                             <group string="English Word">
                                 <field name="word"/>
+                                <field name="forms"/>
                             </group>
                             <group string="Word Pronounce">
                                 <field name='america_accent' />
@@ -137,4 +138,62 @@
 
         <menuitem name="Word List Detail" parent="menu_english_title" id="english_lexicon_explain_menu_tree" action="english_lexicon_explain_action" sequence="1"/>
 
+        <!--view list for EnglishLexiconHtml-->
+        <record id="english_lexicon_word_html_view_tree" model="ir.ui.view">
+            <field name="name">english.lexicon.word.html.tree</field>
+            <field name="model">english.lexicon.word.html</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="word"/>
+                    <field name="america_accent"/>
+                    <field name="british_accent"/>
+                    <field name="chinese_mean"/>
+                    <field name="source_name"/>
+                    <field name="sequence"/>
+                    <field name="is_parsed"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="english_lexicon_word_html_view_search" model="ir.ui.view">
+            <field name="name">english_lexicon_word_html.search</field>
+            <field name="model">english.lexicon.word.html</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="word" filter_domain="[ ('word', 'ilike', self)]"/>
+                    <field name="chinese_mean"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="english_lexicon_word_html_view_form" model="ir.ui.view">
+            <field name="name">english_lexicon_word_html.form</field>
+            <field name="model">english.lexicon.word.html</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="word"/>
+                            <field name='is_parsed' />
+                        </group>
+                        <group string='Word Html'>
+                            <field name='html_content' />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="english_lexicon_word_html_action" model="ir.actions.act_window">
+            <field name="name">english_lexicon_word_html Action</field>
+            <field name="res_model">english.lexicon.word.html</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to create a english lexicon word html.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Word Html" parent="menu_english_title" id="english_lexicon_word_html_menu_tree" action="english_lexicon_word_html_action" sequence="3"/>
 </odoo>

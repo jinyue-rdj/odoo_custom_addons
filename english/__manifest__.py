@@ -16,6 +16,7 @@ The app uses english sentences to explain the words meaning.
         'security/english_security.xml',
         'security/ir.model.access.csv',
         'views/english_views.xml',
+        'data/format_word_cron.xml',
     ],
     'installable': True,
     'application': True,

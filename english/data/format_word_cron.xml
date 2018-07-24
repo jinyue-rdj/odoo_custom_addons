@@ -1,0 +1,12 @@
+<odoo>
+    <record model="ir.cron" id="english_lexicon_word_html_minutes">
+        <field name="name">Format words from www.collinsdictionary.com minutes</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_english_lexicon_word_html"/>
+        <field name="state">code</field>
+        <field name="code">model._automated_format_word()</field>
+    </record>
+</odoo>
