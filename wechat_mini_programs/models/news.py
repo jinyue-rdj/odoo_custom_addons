@@ -92,3 +92,28 @@ class News(models.Model):
         self.env.cr.execute(news_sql)
         result['news_list'] = self.env.cr.dictfetchall()
         return result
+
+    def get_group_list(self):
+        result = {}
+        first_sql = """SELECT a.*
+                              FROM ir_model_access a
+                              JOIN ir_model m ON (m.id = a.model_id)
+                              JOIN res_groups_users_rel gu ON (gu.gid = a.group_id)
+                              WHERE m.model = '%s'
+                              AND gu.uid = %d
+                              AND a.active IS TRUE
+                      """
+        second_sql = """  SELECT a.*
+                          FROM ir_model_access a
+                          JOIN ir_model m ON (m.id = a.model_id)
+                          WHERE a.group_id IS NULL
+                          AND m.model = '%s'
+                          AND a.active IS TRUE
+                     """
+        news_sql = first_sql % (self._name, self._uid)
+        special_sql = second_sql % self._name
+        self.env.cr.execute(news_sql)
+        result['first_list'] = self.env.cr.dictfetchall()
+        self.env.cr.execute(special_sql)
+        result['second_list'] = self.env.cr.dictfetchall()
+        return result

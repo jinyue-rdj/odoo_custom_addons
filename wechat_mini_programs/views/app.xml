@@ -11,7 +11,6 @@
                 <field name="order"></field>
                 <field name="slogan"></field>
                 <field name="is_enabled"></field>
-                <field name="thumb_url"></field>
             </tree>
         </field>
     </record>
@@ -21,9 +20,13 @@
         <field name="model">wechat.app.category</field>
         <field name="arch" type="xml">
             <form string="Category Form">
+                <div class="oe_button_box" name="button_box">
+                    <button  class="oe_stat_button" name="attachment_tree_view" type="object" icon="fa-files-o">
+                        <field string="images" name="image_count" widget="statinfo"/>
+                    </button>
+                </div>
                 <group>
                     <field name="name"></field>
-                    <field name="thumb_url"></field>
                 </group>
                 <group>
                     <field name="short_code"></field>
@@ -55,7 +58,6 @@
                 <field name="short_code"></field>
                 <field name="wechat_page_url"></field>
                 <field name="is_enabled"></field>
-                <field name="thumb_url"></field>
                 <field name="app_category_id"></field>
             </tree>
         </field>
@@ -66,9 +68,13 @@
         <field name="model">wechat.app</field>
         <field name="arch" type="xml">
             <form string="Category Form">
+                <div class="oe_button_box" name="button_box">
+                    <button  class="oe_stat_button" name="attachment_tree_view" type="object" icon="fa-files-o">
+                        <field string="images" name="image_count" widget="statinfo"/>
+                    </button>
+                </div>
                 <group>
                     <field name="name"></field>
-                    <field name="thumb_url"></field>
                 </group>
                 <group>
                     <field name="short_code"></field>

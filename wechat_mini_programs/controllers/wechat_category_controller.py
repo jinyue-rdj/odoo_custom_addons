@@ -29,7 +29,7 @@ class WechatCategoryController(http.Controller):
         app_list = request.env['wechat.app'].sudo().get_apps(category_id)
         category = request.env['wechat.app.category'].sudo().search([("id", "=", category_id)])
         result['current_app_list'] = app_list
-        result['current_image_url'] = category.thumb_url
+        result['current_image_url'] = request.env['wechat.app.category'].sudo().get_attachment_url(category_id)
         result['current_category_id'] = category.id
         result['current_category_name'] = category.name
         result['current_category_slogan'] = category.slogan

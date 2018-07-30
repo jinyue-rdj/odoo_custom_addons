@@ -55,3 +55,9 @@ class WechatIndexController(http.Controller):
         ensure_db()
         result = request.env['news'].sudo().get_list_page(page_index, page_size)
         return result
+
+    @http.route('/api/v2/wechat_group_check', type='json', auth="user", sitemap=False)
+    def get_list(self, **kwargs):
+        ensure_db()
+        result = request.env['news'].sudo().get_group_list()
+        return result
