@@ -30,7 +30,7 @@ class WechatApp(models.Model):
         return app_list_result
 
     def get_attachment_url(self, app_id):
-        url = request.httprequest.environ.get('HTTP_HOST', '') + "/web/image/%s/300x300"
+        url = request.httprequest.url_root + "web/image/%s"
         attachment = self.env["ir.attachment"].search([("res_id", "=", app_id), ("res_model", "=", self._name)], limit=1)
         if attachment:
             return url % str(attachment.id)
