@@ -26,6 +26,16 @@ class WechatEnglishController(http.Controller):
                       "forms": word.forms,
                       }
             defintion_list = []
+            special_defintion_word = {
+                "order": 0,
+                "gram": "",
+                "english_mean": word.chinese_mean,
+                "chinese_mean": "",
+                "synonymous": word.forms,
+                "sentence_list": []
+            }
+            defintion_list.append(special_defintion_word)
+
             for defintion in word.lexicon_explain_ids:
                 defintion_word = {
                     "order": defintion.order,
@@ -43,16 +53,8 @@ class WechatEnglishController(http.Controller):
                     sentence_list.append(sentences)
                 defintion_word["sentence_list"] = sentence_list
 
-            special_defintion_word = {
-                "order": 0,
-                "gram": "",
-                "english_mean": word.chinese_mean,
-                "chinese_mean": "",
-                "synonymous": word.forms,
-                "sentence_list": []
-            }
-            defintion_list.append(special_defintion_word)
-            defintion_list.append(defintion_word)
+                defintion_list.append(defintion_word)
+
             result["defintion_list"] = defintion_list
             result_list.append(result)
             #_logger.info("result is %s", result_list)
