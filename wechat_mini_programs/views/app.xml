@@ -99,4 +99,54 @@
 
     <menuitem name="wechat_app_menu" parent="wechat_app" id="wechat_app_menu_list" action="wechat_app_action"></menuitem>
 
+    <record id="view_wechat_feedback_list" model="ir.ui.view">
+        <field name="name">wechat feedback list</field>
+        <field name="model">wechat.feedback</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="content"></field>
+                <field name="contact"></field>
+                <field name="user_id"></field>
+                <field name="feedback_date"></field>
+                <field name="is_processed"></field>
+                <field name="processed_content"></field>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_wechat_feedback_form" model="ir.ui.view">
+        <field name="name">wechat feedback form</field>
+        <field name="model">wechat.feedback</field>
+        <field name="arch" type="xml">
+            <form string="Feedback Form">
+                <div class="oe_button_box" name="button_box">
+                    <button  class="oe_stat_button" name="attachment_tree_view" type="object" icon="fa-files-o">
+                        <field string="images" name="image_count" widget="statinfo"/>
+                    </button>
+                </div>
+                <group>
+                    <field name="content"></field>
+                </group>
+                <group>
+                    <field name="contact"></field>
+                    <field name="user_id"></field>
+                </group>
+                <group>
+                    <field name="feedback_date"></field>
+                    <field name="is_processed"></field>
+                </group>
+                <group>
+                    <field name="processed_content"></field>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="wechat_feedback_action" model="ir.actions.act_window">
+        <field name="name">wechat feedback</field>
+        <field name="res_model">wechat.feedback</field>
+        <field name="view_model">tree,form</field>
+    </record>
+
+    <menuitem name="wechat_feedback" parent="wechat_app" id="wechat_feedback_menu_list" action="wechat_feedback_action"></menuitem>
 </odoo>

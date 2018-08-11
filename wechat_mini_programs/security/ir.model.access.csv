@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_wechat_mini_program_news","news","model_news","base.group_user",1,1,1,0
+"access_wechat_mini_program_news_category","news_category","model_news_category","base.group_user",1,1,1,0
+"access_wechat_mini_program_wechat_app","wechat_app","model_wechat_app","base.group_user",1,1,1,0
+"access_wechat_mini_program_wechat_app_category","wechat_app_category","model_wechat_app_category","base.group_user",1,1,1,0
