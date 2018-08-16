@@ -1,5 +1,5 @@
 
-from odoo import fields, models
+from odoo import fields, models, api
 from bs4 import BeautifulSoup
 import werkzeug
 import requests
@@ -25,6 +25,10 @@ class EnglishLexicon(models.Model):
     is_updated = fields.Boolean(string="Is Updated", default=False)
     forms = fields.Text(string="Word Forms")
     english_lexicon_synonymous_ids = fields.One2many('english.lexicon.synonymous', 'target_lexicon_id', "TargetSynonymous")
+
+    @api.multi
+    def name_get(self):
+        return [(record.id, record.word) for record in self]
 
 
 class EnglishLexiconExplain(models.Model):
@@ -216,4 +220,34 @@ class EnglishLexiconWordHtml(models.Model):
         _logger.info("begin try_count")
         sql = """ update english_lexicon_word_html set try_count = 0 """
         self.env.cr.execute(sql)
+
+
+class EnglishLexiconExplainExample(models.Model):
+    _name = "english.lexicon.master.level"
+
+    name = fields.Text(string="Word Level")
+    level_value = fields.Integer()
+    enable = fields.Boolean(string="IsEnabled", default=True)
+
+    def get_all_level(self):
+        result = []
+        list = self.search([('enable', '=', True)])
+        for l in list:
+            result.append({'name': l.name, 'id': l.id, 'value': l.level_value})
+        return result
+
+
+class EnglishLexiconExplainExample(models.Model):
+    _name = "english.lexicon.user.master"
+
+    english_lexicon_id = fields.Many2one('english.lexicon', 'EnglishLexicon', ondelete='cascade', required=True)
+    user_id = fields.Many2one('res.users', 'User', ondelete='cascade', required=True)
+    level_id = fields.Many2one("english.lexicon.master.level", string="Master Level", required=True)
+
+    def save_user_word(self, word_id, user_id, level_id):
+        word = self.search([('english_lexicon_id', '=', word_id), ('user_id', '=', user_id)], limit=1)
+        if word:
+            word.write({'level_id': level_id})
+        else:
+            self.create({'english_lexicon_id': word_id, 'user_id': user_id, 'level_id': level_id})
 

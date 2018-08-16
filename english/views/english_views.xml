@@ -196,4 +196,100 @@
         </record>
 
         <menuitem name="Word Html" parent="menu_english_title" id="english_lexicon_word_html_menu_tree" action="english_lexicon_word_html_action" sequence="3"/>
+
+        <!--For Master Level-->
+        <record id="english_lexicon_master_level_tree" model="ir.ui.view">
+            <field name="name">Master Level Tree</field>
+            <field name="model">english.lexicon.master.level</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="level_value"/>
+                    <field name="enable"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="english_lexicon_master_level_form" model="ir.ui.view">
+            <field name="name">Master Level Form</field>
+            <field name="model">english.lexicon.master.level</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="level_value"/>
+                            </group>
+                            <group>
+                                <field name='enable' />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="english_lexicon_master_level_action" model="ir.actions.act_window">
+            <field name="name">Master Level Action</field>
+            <field name="res_model">english.lexicon.master.level</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to create a english master level.
+            </p>
+            </field>
+        </record>
+
+        <menuitem name="Set Level" parent="menu_english_title" id="english_lexicon_master_level_menu_tree" action="english_lexicon_master_level_action" sequence="4"/>
+
+        <!--For User Master Level-->
+        <record id="english_lexicon_user_master_level_tree" model="ir.ui.view">
+            <field name="name">User Master Level Tree</field>
+            <field name="model">english.lexicon.user.master</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="english_lexicon_id"/>
+                    <field name="user_id"/>
+                    <field name="level_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="english_lexicon_user_master_level_form" model="ir.ui.view">
+            <field name="name">Master Level Form</field>
+            <field name="model">english.lexicon.user.master</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="english_lexicon_id"/>
+                            </group>
+                            <group>
+                                <field name="user_id"/>
+                            </group>
+                            <group>
+                                <field name='level_id' />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="english_lexicon_user_master_level_action" model="ir.actions.act_window">
+            <field name="name">User Master Level Action</field>
+            <field name="res_model">english.lexicon.user.master</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to create a user english master level.
+            </p>
+            </field>
+        </record>
+
+        <menuitem name="User Master" parent="menu_english_title" id="english_lexicon_user_master_level_menu_tree" action="english_lexicon_user_master_level_action" sequence="5"/>
 </odoo>
