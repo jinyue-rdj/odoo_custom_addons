@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import werkzeug
 import requests
 import logging
+import json
 
 _logger = logging.getLogger(__name__)
 
@@ -81,3 +82,13 @@ class WechatEnglishController(http.Controller):
         except Exception:
             result['is_success'] = False
         return result
+
+    @http.route('/api/v2/get_word_id', type='http', auth="none", csrf=False)
+    def get_word_id(self, word, **kwargs):
+        result = {'id': 0}
+        request.session.db = "Odoo_Project"
+        word_list = request.env['english.lexicon'].sudo().search([
+            ("word", "=", word)], limit=1)
+        if word_list:
+            result["id"] = word_list.id
+        return json.dumps(result)
