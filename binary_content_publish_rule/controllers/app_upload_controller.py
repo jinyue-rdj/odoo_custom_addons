@@ -1,5 +1,5 @@
 import json
-from odoo import http
+from odoo import http, tools
 from odoo.http import request
 import base64
 import logging
@@ -29,7 +29,7 @@ class AppUploadController(http.Controller):
 
     @http.route('/api/binary/upload_attachment', type='http', auth="user", csrf=False)
     def wechat_upload_attachement(self, model, id, **kw):
-        files  = request.httprequest.files.getlist('ufile')
+        files = request.httprequest.files.getlist('ufile')
         attachement_model = request.env['ir.attachment']
         result = []
         for f in files:
@@ -44,6 +44,7 @@ class AppUploadController(http.Controller):
                     'res_id': int(id)
                 })
                 result.append({'file_name': file_name, 'is_success': True})
-            except Exception:
-                result.append({'file_name': file_name, 'is_success': False})
+            except Exception as e:
+                info = tools.ustr(e)
+                result.append({'file_name': file_name, 'is_success': False, 'info': info})
         return json.dumps(result)
