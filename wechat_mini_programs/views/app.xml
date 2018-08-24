@@ -149,4 +149,48 @@
     </record>
 
     <menuitem name="wechat_feedback" parent="wechat_app" id="wechat_feedback_menu_list" action="wechat_feedback_action"></menuitem>
+
+    <record id="view_wechat_app_splash_list" model="ir.ui.view">
+        <field name="name">wechat app splash list</field>
+        <field name="model">wechat.app.splash</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"></field>
+                <field name="app_author"></field>
+                <field name="copy_right"></field>
+                <field name="is_enabled"></field>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_wechat_app_splash_form" model="ir.ui.view">
+        <field name="name">wechat app splash form</field>
+        <field name="model">wechat.app.splash</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_button_box" name="button_box">
+                    <button  class="oe_stat_button" name="attachment_tree_view" type="object" icon="fa-files-o">
+                        <field string="images" name="image_count" widget="statinfo"/>
+                    </button>
+                </div>
+                <group>
+                    <field name="name"></field>
+                    <field name="app_author"></field>
+                </group>
+                <group>
+                    <field name="copy_right"></field>
+                    <field name="is_enabled"></field>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="wechat_app_splash_action" model="ir.actions.act_window">
+        <field name="name">wechat app splash</field>
+        <field name="res_model">wechat.app.splash</field>
+        <field name="view_model">tree,form</field>
+    </record>
+
+    <menuitem name="wechat_app_splash" parent="wechat_app" id="wechat_app_splash_menu_list" action="wechat_app_splash_action"></menuitem>
+
 </odoo>
