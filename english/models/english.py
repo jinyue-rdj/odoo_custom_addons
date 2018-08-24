@@ -1,6 +1,7 @@
 
 from odoo import fields, models, api
 from bs4 import BeautifulSoup
+from openerp.http import request
 import werkzeug
 import requests
 import logging
@@ -29,6 +30,15 @@ class EnglishLexicon(models.Model):
     @api.multi
     def name_get(self):
         return [(record.id, record.word) for record in self]
+
+    def get_word_voice_url(self, word_id):
+        url = request.httprequest.url_root + "web/content/%s"
+        attachment = self.env["ir.attachment"].search([("res_id", "=", word_id), ("res_model", "=", self._name)],
+                                                      limit=1)
+        if attachment:
+            return url % str(attachment.id)
+        else:
+            return ""
 
 
 class EnglishLexiconExplain(models.Model):

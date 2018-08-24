@@ -15,8 +15,9 @@ class WechatEnglishController(http.Controller):
     def wechat_category(self, key, **kw):
         result_list = []
         user_id = request.env.user.id
+        word_lexicon = request.env['english.lexicon']
         user_word = request.env['english.lexicon.user.master']
-        word_list = request.env['english.lexicon'].sudo().search([
+        word_list = word_lexicon.sudo().search([
             "|",
             ("word", "ilike", key),
             ("chinese_mean", "ilike", key)])
@@ -25,6 +26,7 @@ class WechatEnglishController(http.Controller):
             user_master = user_word.sudo().search([('english_lexicon_id', '=', word.id), ('user_id', '=', user_id)], limit=1)
             if user_master:
                 is_added = True
+            word_voice_url = word_lexicon.sudo().get_word_voice_url(word.id)
             result = {"id": word.id,
                       "word": word.word,
                       "chinese_mean": word.chinese_mean,
@@ -32,7 +34,8 @@ class WechatEnglishController(http.Controller):
                       "source_name": word.source_name,
                       "sequence": word.sequence,
                       "forms": word.forms,
-                      "is_added": is_added
+                      "is_added": is_added,
+                      "voice_url": word_voice_url,
                       }
             defintion_list = []
             special_defintion_word = {
