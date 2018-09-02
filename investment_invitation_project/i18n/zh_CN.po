@@ -1,0 +1,223 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* investment_invitation_project
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-28 07:30+0000\n"
+"PO-Revision-Date: 2018-08-28 07:30+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,help:investment_invitation_project.invest_project_comment_action
+msgid "Click to create a invest project comment."
+msgstr “点击创建按钮添加项目点评”
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,help:investment_invitation_project.invest_project_action
+msgid "Click to create a invest project."
+msgstr “点击创建按钮添加项目.”
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,help:investment_invitation_project.invest_project_status_action
+msgid "Click to create a project status."
+msgstr “点击创建按钮添加状态.”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_comment_date
+msgid "Comment Date"
+msgstr “点评日期”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_comment_user_id
+msgid "Comment User"
+msgstr “点评人”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_invest_project_comment_ids
+#: model:ir.ui.menu,name:investment_invitation_project.invest_project_comment_menu
+msgid "Comments"
+msgstr “点评”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_name
+msgid "Content"
+msgstr “点评内容”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_create_uid
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_create_uid
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_create_uid
+msgid "Created by"
+msgstr “创建人”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_create_date
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_create_date
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_create_date
+msgid "Created on"
+msgstr "Created on"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_details
+msgid "Detail"
+msgstr “详情”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_display_name
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_display_name
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_display_name
+msgid "Display Name"
+msgstr “显示名”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_id
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_id
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_id
+msgid "ID"
+msgstr "ID"
+
+#. module: investment_invitation_project
+#: model:ir.model,name:investment_invitation_project.model_invest_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_invest_project_id
+#: model:ir.ui.menu,name:investment_invitation_project.invest_project_menu
+msgid "Invest Project"
+msgstr “项目”
+
+#. module: investment_invitation_project
+#: model:ir.model,name:investment_invitation_project.model_invest_project_comment
+msgid "Invest Project Comment"
+msgstr “点评”
+
+#. module: investment_invitation_project
+#: model:ir.model,name:investment_invitation_project.model_invest_project_status
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_invest_project_status_id
+msgid "Invest Project Status"
+msgstr “进度”
+
+#. module: investment_invitation_project
+#: model:ir.ui.menu,name:investment_invitation_project.menu_invest_project
+msgid "Investment Project"
+msgstr “项目”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_is_enabled
+msgid "Is Enabled"
+msgstr “是否可用”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_is_published
+msgid "Is Published"
+msgstr “是否发布”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project___last_update
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment___last_update
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status___last_update
+msgid "Last Modified on"
+msgstr “上次修改”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_write_uid
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_write_uid
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_write_uid
+msgid "Last Updated by"
+msgstr “上次更新人”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_write_date
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_write_date
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_write_date
+msgid "Last Updated on"
+msgstr “上次更新”
+
+#. module: investment_invitation_project
+#: model:ir.module.category,description:investment_invitation_project.module_invest_project
+msgid "Manage Invest Project"
+msgstr “招商项目管理模块”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_manager_user_id
+msgid "Manager User"
+msgstr “管理员”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_name
+msgid "Project"
+msgstr “项目”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_lexicon_explain_example_ids
+#: model:ir.ui.menu,name:investment_invitation_project.invest_project_status_menu
+msgid "Project Status"
+msgstr “进度”
+
+#. module: investment_invitation_project
+#: model:ir.ui.menu,name:investment_invitation_project.menu_invest_project_project
+msgid "Projects"
+msgstr “项目”
+
+#. module: investment_invitation_project
+#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_comment_view_search
+#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_status_view_search
+#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_view_search
+msgid "Search"
+msgstr “查询”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_sequence
+msgid "Sequence"
+msgstr “顺序”
+
+#. module: investment_invitation_project
+#: model:ir.ui.menu,name:investment_invitation_project.menu_invest_project_setting
+msgid "Setting"
+msgstr “基本资料”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_name
+msgid "Status"
+msgstr “进度”
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_synopsis
+msgid "Synopsis"
+msgstr “概要”
+
+#. module: investment_invitation_project
+#: model:ir.module.category,name:investment_invitation_project.module_invest_project
+msgid "invest project"
+msgstr “项目”
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,name:investment_invitation_project.invest_project_action
+msgid "invest_project_action"
+msgstr “项目动作”
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,name:investment_invitation_project.invest_project_comment_action
+msgid "invest_project_comment_action"
+msgstr “项目点评动作”
+
+#. module: investment_invitation_project
+#: model:res.groups,name:investment_invitation_project.group_invest_project_common_user
+msgid "invest_project_common_user"
+msgstr “普通用户组”
+
+#. module: investment_invitation_project
+#: model:res.groups,name:investment_invitation_project.group_invest_project_manager
+msgid "invest_project_manager"
+msgstr “管理员组”
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,name:investment_invitation_project.invest_project_status_action
+msgid "invest_project_status_action"
+msgstr “进度动作”
+

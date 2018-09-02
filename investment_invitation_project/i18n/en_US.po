@@ -1,0 +1,223 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* investment_invitation_project
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-28 07:30+0000\n"
+"PO-Revision-Date: 2018-08-28 07:30+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,help:investment_invitation_project.invest_project_comment_action
+msgid "Click to create a invest project comment."
+msgstr "Click to create a invest project comment."
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,help:investment_invitation_project.invest_project_action
+msgid "Click to create a invest project."
+msgstr "Click to create a invest project."
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,help:investment_invitation_project.invest_project_status_action
+msgid "Click to create a project status."
+msgstr "Click to create a project status."
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_comment_date
+msgid "Comment Date"
+msgstr "Comment Date"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_comment_user_id
+msgid "Comment User"
+msgstr "Comment User"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_invest_project_comment_ids
+#: model:ir.ui.menu,name:investment_invitation_project.invest_project_comment_menu
+msgid "Comments"
+msgstr "Comments"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_name
+msgid "Content"
+msgstr "Content"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_create_uid
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_create_uid
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_create_uid
+msgid "Created by"
+msgstr "Created by"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_create_date
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_create_date
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_create_date
+msgid "Created on"
+msgstr "Created on"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_details
+msgid "Detail"
+msgstr "Detail"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_display_name
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_display_name
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_display_name
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_id
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_id
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_id
+msgid "ID"
+msgstr "ID"
+
+#. module: investment_invitation_project
+#: model:ir.model,name:investment_invitation_project.model_invest_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_invest_project_id
+#: model:ir.ui.menu,name:investment_invitation_project.invest_project_menu
+msgid "Invest Project"
+msgstr "Invest Project"
+
+#. module: investment_invitation_project
+#: model:ir.model,name:investment_invitation_project.model_invest_project_comment
+msgid "Invest Project Comment"
+msgstr "Invest Project Comment"
+
+#. module: investment_invitation_project
+#: model:ir.model,name:investment_invitation_project.model_invest_project_status
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_invest_project_status_id
+msgid "Invest Project Status"
+msgstr "Invest Project Status"
+
+#. module: investment_invitation_project
+#: model:ir.ui.menu,name:investment_invitation_project.menu_invest_project
+msgid "Investment Project"
+msgstr "Investment Project"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_is_enabled
+msgid "Is Enabled"
+msgstr "Is Enabled"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_is_published
+msgid "Is Published"
+msgstr "Is Published"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project___last_update
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment___last_update
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status___last_update
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_write_uid
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_write_uid
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_write_uid
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_write_date
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_write_date
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_write_date
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: investment_invitation_project
+#: model:ir.module.category,description:investment_invitation_project.module_invest_project
+msgid "Manage Invest Project"
+msgstr "Manage Invest Project"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_manager_user_id
+msgid "Manager User"
+msgstr "Manager User"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_name
+msgid "Project"
+msgstr "Project"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_lexicon_explain_example_ids
+#: model:ir.ui.menu,name:investment_invitation_project.invest_project_status_menu
+msgid "Project Status"
+msgstr "Project Status"
+
+#. module: investment_invitation_project
+#: model:ir.ui.menu,name:investment_invitation_project.menu_invest_project_project
+msgid "Projects"
+msgstr "Projects"
+
+#. module: investment_invitation_project
+#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_comment_view_search
+#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_status_view_search
+#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_view_search
+msgid "Search"
+msgstr "Search"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_sequence
+msgid "Sequence"
+msgstr "Sequence"
+
+#. module: investment_invitation_project
+#: model:ir.ui.menu,name:investment_invitation_project.menu_invest_project_setting
+msgid "Setting"
+msgstr "Setting"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_name
+msgid "Status"
+msgstr "Status"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_synopsis
+msgid "Synopsis"
+msgstr "Synopsis"
+
+#. module: investment_invitation_project
+#: model:ir.module.category,name:investment_invitation_project.module_invest_project
+msgid "invest project"
+msgstr "invest project"
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,name:investment_invitation_project.invest_project_action
+msgid "invest_project_action"
+msgstr "invest_project_action"
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,name:investment_invitation_project.invest_project_comment_action
+msgid "invest_project_comment_action"
+msgstr "invest_project_comment_action"
+
+#. module: investment_invitation_project
+#: model:res.groups,name:investment_invitation_project.group_invest_project_common_user
+msgid "invest_project_common_user"
+msgstr "invest_project_common_user"
+
+#. module: investment_invitation_project
+#: model:res.groups,name:investment_invitation_project.group_invest_project_manager
+msgid "invest_project_manager"
+msgstr "invest_project_manager"
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,name:investment_invitation_project.invest_project_status_action
+msgid "invest_project_status_action"
+msgstr "invest_project_status_action"
+

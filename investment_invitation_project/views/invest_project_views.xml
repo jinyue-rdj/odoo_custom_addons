@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Top menu item -->
+        <menuitem id='menu_invest_project' name='Investment Project' sequence="100" groups="group_invest_project_manager" />
+        <menuitem id="menu_invest_project_setting" name="Setting" parent="menu_invest_project"  sequence="10" />
+        <menuitem id="menu_invest_project_project" name="Projects" parent="menu_invest_project"  sequence="20" />
+
+        <!--view list for status-->
+        <record id="invest_project_status_view_tree" model="ir.ui.view">
+            <field name="name">invest project status tree</field>
+            <field name="model">invest.project.status</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="sequence"/>
+                    <field name="is_enabled"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="invest_project_status_view_form" model="ir.ui.view">
+            <field name="name">invest_project_status_form</field>
+            <field name="model">invest.project.status</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="sequence"/>
+                            </group>
+                            <group>
+                                <field name='is_enabled' />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="invest_project_status_view_search" model="ir.ui.view">
+            <field name="name">invest_project_status_search</field>
+            <field name="model">invest.project.status</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="invest_project_status_action" model="ir.actions.act_window">
+            <field name="name">invest_project_status_action</field>
+            <field name="res_model">invest.project.status</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="invest_project_status_view_search"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to create a project status.
+            </p>
+            </field>
+        </record>
+
+        <menuitem name="Project Status" parent="menu_invest_project_setting" id="invest_project_status_menu" action="invest_project_status_action" sequence="1"/>
+
+        <!--view list for category-->
+        <record id="invest_project_category_view_tree" model="ir.ui.view">
+            <field name="name">invest project category tree</field>
+            <field name="model">invest.project.category</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="is_enabled"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="invest_project_category_view_form" model="ir.ui.view">
+            <field name="name">invest_project_category_form</field>
+            <field name="model">invest.project.category</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="is_enabled"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="invest_project_category_view_search" model="ir.ui.view">
+            <field name="name">invest_project_category_search</field>
+            <field name="model">invest.project.category</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="name" filter_domain="[('name', 'like', self)]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="invest_project_category_action" model="ir.actions.act_window">
+            <field name="name">invest_project_category_action</field>
+            <field name="res_model">invest.project.category</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="invest_project_category_view_search"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to create a project category.
+            </p>
+            </field>
+        </record>
+
+        <menuitem name="Project Category" parent="menu_invest_project_setting" id="invest_project_category_menu" action="invest_project_category_action" sequence="2"/>
+
+        <!--view list for invest project-->
+        <record id="invest_project_view_tree" model="ir.ui.view">
+            <field name="name">invest_project_tree</field>
+            <field name="model">invest.project</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="category_id"/>
+                    <field name="total_invest"/>
+                    <field name="invest_synopsis"/>
+                    <field name="invest_demand"/>
+                    <field name="invest_project_status_id"/>
+                    <field name="manager_user_id"/>
+                    <field name="is_published"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="invest_project_view_form" model="ir.ui.view">
+            <field name="name">invest_project_form</field>
+            <field name="model">invest.project</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button  class="oe_stat_button" name="attachment_tree_view" type="object" icon="fa-files-o">
+                                <field string="images" name="image_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"></field>
+                                <field name="total_invest"></field>
+                            </group>
+                            <group>
+                                <field name="category_id"></field>
+                                <field name="invest_project_status_id"></field>
+                            </group>
+                            <group>
+                                <field name="manager_user_id"></field>
+                            </group>
+                            <group>
+                                <field name="is_published"></field>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="invest_synopsis"></field>
+                        </group>
+                        <group>
+                            <field name="invest_demand"/>
+                        </group>
+                        <notebook>
+                            <page name="progress" string="Project Progress">
+                                <field name='invest_project_progress_ids'>
+                                       <tree editable='bottom'>
+                                            <field name='name'/>
+                                            <field name='date_info' />
+                                        </tree>
+                                </field>
+                            </page>
+                            <page name="Comments" string="Project Comments">
+                                <field name='invest_project_comment_ids'>
+                                       <tree editable='bottom'>
+                                            <field name='name'/>
+                                            <field name='comment_user_id' />
+                                           <field name='comment_date' />
+                                        </tree>
+                                </field>
+                            </page>
+                            <page name="Followers" string="Project Followers">
+                                <field name="follower_member_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+                            </page>
+                        </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="invest_project_view_search" model="ir.ui.view">
+            <field name="name">invest_project_search</field>
+            <field name="model">invest.project</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="name" filter_domain="[('name', 'like', self)]"/>
+                    <field name="invest_project_status_id"/>
+                    <field name="manager_user_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="invest_project_action" model="ir.actions.act_window">
+            <field name="name">invest_project_action</field>
+            <field name="res_model">invest.project</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to create a invest project.
+            </p>
+            </field>
+        </record>
+
+        <menuitem name="Invest Project" parent="menu_invest_project_project" id="invest_project_menu" action="invest_project_action" sequence="1"/>
+
+
+        <!--view list for invest project comment-->
+        <record id="invest_project_comment_view_tree" model="ir.ui.view">
+            <field name="name">invest_project_comment_tree</field>
+            <field name="model">invest.project.comment</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="invest_project_id"/>
+                    <field name="name"/>
+                    <field name="comment_user_id"/>
+                    <field name="comment_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="invest_project_comment_view_form" model="ir.ui.view">
+            <field name="name">invest_project_comment_form</field>
+            <field name="model">invest.project.comment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="invest_project_id"></field>
+                                <field name="comment_user_id"></field>
+                            </group>
+                            <group>
+                                <field name="comment_date"></field>
+                            </group>
+                        </group>
+                        <field name="name"></field>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="invest_project_comment_view_search" model="ir.ui.view">
+            <field name="name">invest_project_comment_search</field>
+            <field name="model">invest.project.comment</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                    <field name="invest_project_id"/>
+                    <field name="comment_user_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="invest_project_comment_action" model="ir.actions.act_window">
+            <field name="name">invest_project_comment_action</field>
+            <field name="res_model">invest.project.comment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to create a invest project comment.
+            </p>
+            </field>
+        </record>
+
+        <menuitem name="Comments" parent="menu_invest_project_project" id="invest_project_comment_menu" action="invest_project_comment_action" sequence="2"/>
+
+</odoo>
