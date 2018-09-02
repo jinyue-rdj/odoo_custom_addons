@@ -5,7 +5,7 @@
 
 import werkzeug
 import requests
-from odoo import http
+from odoo import http, tools
 from odoo.http import request
 from odoo.service import security
 import logging
