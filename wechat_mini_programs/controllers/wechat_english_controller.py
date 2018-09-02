@@ -95,3 +95,9 @@ class WechatEnglishController(http.Controller):
         if word_list:
             result["id"] = word_list.id
         return json.dumps(result)
+
+    @http.route('/api/v2/delete_word_id', type='http', auth="none", csrf=False)
+    def delete_word_id(self, **kwargs):
+        request.session.db = "Odoo_Project"
+        result = request.env['english.lexicon'].sudo().delete_attachment()
+        return json.dumps(result)

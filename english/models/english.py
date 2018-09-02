@@ -40,6 +40,20 @@ class EnglishLexicon(models.Model):
         else:
             return ""
 
+    def delete_attachment(self):
+        result = {}
+        result['is_success'] = True
+        try:
+            sql = """ Delete FROM ir_attachment where res_model='english.lexicon' 
+                  """
+            self.env.cr.execute(sql)
+            self.env.cr.commit()
+            if not self.env.cr.closed:
+                self.env.cr.close()
+        except Exception as e:
+            result['is_success'] = False
+        return result
+
 
 class EnglishLexiconExplain(models.Model):
 
