@@ -1,4 +1,4 @@
-from odoo import http
+from odoo import http, tools
 from odoo.http import request
 from bs4 import BeautifulSoup
 import werkzeug
@@ -101,3 +101,26 @@ class WechatEnglishController(http.Controller):
         request.session.db = "Odoo_Project"
         result = request.env['english.lexicon'].sudo().delete_attachment()
         return json.dumps(result)
+
+    @http.route('/api/v2/wechat_level_words', type='json', auth="user")
+    def get_level_words(self, level_id, page_index, page_size, **kw):
+        result = {'is_success': True}
+        user_id = request.env.user.id
+        try:
+            data = request.env['english.lexicon.user.master'].sudo()\
+                .get_my_level_words(level_id, user_id, page_index, page_size)
+            result['data'] = data
+        except Exception as e:
+            result['is_success'] = False
+            result['info'] = tools.ustr(e)
+        return result
+
+    @http.route('/api/v2/wechat_insert_my_words', type='json', auth="user")
+    def insert_my_level_words(self, **kw):
+        result = {'is_success': True}
+        try:
+            request.env['english.lexicon.user.master'].sudo().insert_my_words()
+        except Exception as e:
+            result['is_success'] = False
+            result['info'] = tools.ustr(e)
+        return result

@@ -246,7 +246,7 @@ class EnglishLexiconWordHtml(models.Model):
         self.env.cr.execute(sql)
 
 
-class EnglishLexiconExplainExample(models.Model):
+class EnglishLexiconMasterLevel(models.Model):
     _name = "english.lexicon.master.level"
 
     name = fields.Text(string="Word Level")
@@ -261,7 +261,7 @@ class EnglishLexiconExplainExample(models.Model):
         return result
 
 
-class EnglishLexiconExplainExample(models.Model):
+class EnglishLexiconUserMaster(models.Model):
     _name = "english.lexicon.user.master"
 
     english_lexicon_id = fields.Many2one('english.lexicon', 'EnglishLexicon', ondelete='cascade', required=True)
@@ -275,3 +275,67 @@ class EnglishLexiconExplainExample(models.Model):
         else:
             self.create({'english_lexicon_id': word_id, 'user_id': user_id, 'level_id': level_id})
 
+    def get_my_level_words(self, level_id, user_id, page_index, page_size):
+        result_list = []
+        offset = (page_index - 1) * page_size
+        domain = [("level_id", "=", level_id), ("user_id", "=", user_id)]
+        my_words = self.search(domain, offset=offset, limit=page_size, order="create_date desc")
+        word_lexicon = self.env["english.lexicon"]
+        for word_level in my_words:
+            word = word_level.english_lexicon_id
+            word_voice_url = word_lexicon.sudo().get_word_voice_url(word.id)
+            result = {"id": word.id,
+                      "word": word.word,
+                      "chinese_mean": word.chinese_mean,
+                      "british_accent": word.british_accent,
+                      "source_name": word.source_name,
+                      "sequence": word.sequence,
+                      "forms": word.forms,
+                      "voice_url": word_voice_url,
+                      }
+            defintion_list = []
+            special_defintion_word = {
+                "order": 0,
+                "gram": "",
+                "english_mean": word.chinese_mean,
+                "chinese_mean": "",
+                "synonymous": word.forms,
+                "sentence_list": []
+            }
+            defintion_list.append(special_defintion_word)
+
+            for defintion in word.lexicon_explain_ids:
+                defintion_word = {
+                    "order": defintion.order,
+                    "gram": defintion.gram,
+                    "english_mean": defintion.english_mean,
+                    "chinese_mean": defintion.chinese_mean,
+                    "synonymous": defintion.synonymous,
+                }
+                sentence_list = []
+                for example in defintion.lexicon_explain_example_ids:
+                    sentences = {
+                    "order": example.order,
+                    "example": example.sentence,
+                    }
+                    sentence_list.append(sentences)
+                defintion_word["sentence_list"] = sentence_list
+
+                defintion_list.append(defintion_word)
+
+            result["defintion_list"] = defintion_list
+            result_list.append(result)
+        return result_list
+
+    def insert_my_words(self):
+        result = {}
+        first_sql = """INSERT INTO english_lexicon_user_master(english_lexicon_id, user_id, level_id, create_uid, create_date, write_uid, write_date)
+                        SELECT id, 15 user_id,3 level_id, 15 create_uid, current_timestamp craete_date,15 write_uid,current_timestamp write_date
+                        FROM english_lexicon 
+                        where source_name='COCA' and id not in
+                        (
+                           select id from english_lexicon_user_master where user_id = 15
+                        )
+                      """
+        self.env.cr.execute(first_sql)
+        return result
