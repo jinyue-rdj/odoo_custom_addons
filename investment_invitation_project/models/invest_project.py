@@ -131,7 +131,7 @@ class InvestProject(models.Model):
     def follow_project(self, project_id, user_id):
         project = self.search([('id', '=', project_id), ('follower_member_ids', '=', user_id)], limit=1)
         if not project:
-            value = (6, 0, [user_id])
+            value = [(4, user_id, 0)]
             project.write({'follower_member_ids': value})
 
 
