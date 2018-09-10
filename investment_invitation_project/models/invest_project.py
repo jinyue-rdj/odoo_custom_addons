@@ -43,7 +43,7 @@ class InvestProject(models.Model):
     invest_demand = fields.Text(string="Invest Demand")
     is_published = fields.Boolean(string="Is Published", default=True)
     invest_project_status_id = fields.Many2one('invest.project.status', ondelete='restrict', required=True)
-    manager_user_id = fields.Many2one('res.users', 'Manager User')
+    manager_user_id = fields.Many2one('res.users', 'Project Manager User')
     invest_project_progress_ids = fields.One2many('invest.project.progress', 'invest_project_id', "Progress")
     invest_project_comment_ids = fields.One2many('invest.project.comment', 'invest_project_id', "Comments")
     follower_member_ids = fields.Many2many('res.users', 'invest_project_users_rel', 'project_id', 'user_id', string="Follower Members")
