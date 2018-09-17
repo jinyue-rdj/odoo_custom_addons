@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-09 08:32+0000\n"
-"PO-Revision-Date: 2018-09-09 08:32+0000\n"
+"POT-Creation-Date: 2018-09-17 11:53+0000\n"
+"PO-Revision-Date: 2018-09-17 11:53+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: investment_invitation_project
-#: code:addons/investment_invitation_project/models/invest_project.py:115
+#: code:addons/investment_invitation_project/models/invest_project.py:117
 #, python-format
 msgid "<p class=\"oe_view_nocontent_create\">\n"
 "                        Pictures are attached to the project.</p>\n"
@@ -26,96 +26,105 @@ msgstr "<p class=\"oe_view_nocontent_create\">\n"
 "                      "
 
 #. module: investment_invitation_project
-#: code:addons/investment_invitation_project/models/invest_project.py:108
+#: code:addons/investment_invitation_project/models/invest_project.py:110
 #, python-format
 msgid "Attachments"
-msgstr “附件”
+msgstr "附件"
 
 #. module: investment_invitation_project
-#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_category_id_5806
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_category_id_4498
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_category_name
 msgid "Category"
-msgstr “分类”
+msgstr "分类"
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,help:investment_invitation_project.invest_news_action
+msgid "Click to create a invest news."
+msgstr "点击新建最新产业政策."
 
 #. module: investment_invitation_project
 #: model:ir.actions.act_window,help:investment_invitation_project.invest_project_comment_action
 msgid "Click to create a invest project comment."
-msgstr "点击创建按钮增加点评.”
+msgstr "点击创建按钮增加点评."
 
 #. module: investment_invitation_project
 #: model:ir.actions.act_window,help:investment_invitation_project.invest_project_action
 msgid "Click to create a invest project."
-msgstr "点击创建按钮增加项目.”
+msgstr "点击创建按钮增加项目."
 
 #. module: investment_invitation_project
 #: model:ir.actions.act_window,help:investment_invitation_project.invest_project_category_action
 msgid "Click to create a project category."
-msgstr "点击创建按钮增加项目分类.”
+msgstr "点击创建按钮增加项目分类."
 
 #. module: investment_invitation_project
 #: model:ir.actions.act_window,help:investment_invitation_project.invest_project_status_action
 msgid "Click to create a project status."
-msgstr "点击创建按钮增加项目进度.”
+msgstr "点击创建按钮增加项目进度."
 
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_comment_date
 msgid "Comment Date"
-msgstr “点评日期”
+msgstr "点评日期"
 
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_comment_user_id
 msgid "Comment User"
-msgstr “点评人”
+msgstr "点评人"
 
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_invest_project_comment_ids
 #: model:ir.ui.menu,name:investment_invitation_project.invest_project_comment_menu
 msgid "Comments"
-msgstr “点评”
+msgstr "点评"
 
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_name
 msgid "Content"
-msgstr “点评内容”
+msgstr "点评内容"
 
 #. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_news_create_uid
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_category_create_uid
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_create_uid
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_create_uid
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_progress_create_uid
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_create_uid
 msgid "Created by"
-msgstr "Created by"
+msgstr "创建人"
 
 #. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_news_create_date
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_category_create_date
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_create_date
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_create_date
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_progress_create_date
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_create_date
 msgid "Created on"
-msgstr "Created on"
+msgstr "创建时间"
 
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_progress_date_info
 msgid "Date"
-msgstr “日期”
+msgstr "日期   "
 
 #. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_news_display_name
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_category_display_name
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_display_name
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_display_name
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_progress_display_name
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_display_name
 msgid "Display Name"
-msgstr "Display Name"
+msgstr "显示名称"
 
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_follower_member_ids
 msgid "Follower Members"
-msgstr “关注人”
+msgstr "关注人"
 
 #. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_news_id
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_category_id
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_id
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_id
@@ -127,7 +136,7 @@ msgstr "ID"
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_invest_demand
 msgid "Invest Demand"
-msgstr “投资诉求”
+msgstr "投资诉求"
 
 #. module: investment_invitation_project
 #: model:ir.model,name:investment_invitation_project.model_invest_project
@@ -135,161 +144,136 @@ msgstr “投资诉求”
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_progress_invest_project_id
 #: model:ir.ui.menu,name:investment_invitation_project.invest_project_menu
 msgid "Invest Project"
-msgstr “项目信息”
+msgstr "项目信息"
 
 #. module: investment_invitation_project
 #: model:ir.model,name:investment_invitation_project.model_invest_project_category
 msgid "Invest Project Category"
-msgstr “项目类型”
+msgstr "项目类型"
 
 #. module: investment_invitation_project
 #: model:ir.model,name:investment_invitation_project.model_invest_project_comment
 msgid "Invest Project Comment"
-msgstr “点评”
+msgstr "点评"
 
 #. module: investment_invitation_project
 #: model:ir.model,name:investment_invitation_project.model_invest_project_progress
 msgid "Invest Project Progress"
-msgstr “项目进度”
+msgstr "项目进度"
 
 #. module: investment_invitation_project
 #: model:ir.model,name:investment_invitation_project.model_invest_project_status
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_invest_project_status_id
 msgid "Invest Project Status"
-msgstr “项目成熟度”
+msgstr "项目成熟度"
 
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_invest_synopsis
 msgid "Invest Synopsis"
-msgstr “项目简介”
+msgstr "项目简介"
 
 #. module: investment_invitation_project
 #: model:ir.ui.menu,name:investment_invitation_project.menu_invest_project
 msgid "Investment Project"
-msgstr “项目研判系统”
+msgstr "项目研判系统"
 
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_category_is_enabled
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_is_enabled
 msgid "Is Enabled"
-msgstr “是否生效”
+msgstr "是否生效"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_news_is_publish
+msgid "Is Publish"
+msgstr "是否发布"
 
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_is_published
 msgid "Is Published"
-msgstr “是否公开”
+msgstr "是否公开"
 
 #. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_news___last_update
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project___last_update
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_category___last_update
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment___last_update
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_progress___last_update
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status___last_update
 msgid "Last Modified on"
-msgstr "Last Modified on"
+msgstr "最后修改时间"
 
 #. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_news_write_uid
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_category_write_uid
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_write_uid
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_progress_write_uid
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_write_uid
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_write_uid
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "最后更新者"
 
 #. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_news_write_date
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_category_write_date
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_comment_write_date
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_progress_write_date
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_write_date
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_write_date
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "最后更新时间"
 
 #. module: investment_invitation_project
 #: model:ir.module.category,description:investment_invitation_project.module_invest_project
 msgid "Manage Invest Project"
-msgstr “项目研判系统”
+msgstr "项目研判系统"
 
 #. module: investment_invitation_project
-#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_manager_user_id
-msgid "Manager User"
-msgstr “项目研判管理员”
+#: model:ir.ui.menu,name:investment_invitation_project.invest_news_menu
+#: model:ir.ui.menu,name:investment_invitation_project.menu_invest_news
+msgid "News"
+msgstr "最新产业政策"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_news_content
+msgid "NewsContent"
+msgstr "正文"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_news_title
+msgid "NewsTitle"
+msgstr "标题"
 
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_image_count
 msgid "Number of pictures attached"
-msgstr “附件数”
+msgstr "附件数"
 
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_invest_project_progress_ids
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_progress_name
 msgid "Progress"
-msgstr “进度说明”
+msgstr "进度说明"
 
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_name
 msgid "Project"
-msgstr “项目名称”
+msgstr "项目名称"
 
 #. module: investment_invitation_project
 #: model:ir.ui.menu,name:investment_invitation_project.invest_project_category_menu
 msgid "Project Category"
-msgstr “项目类型”
+msgstr "项目类型"
 
 #. module: investment_invitation_project
 #: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_view_form
 msgid "Project Comments"
-msgstr “项目点评记录”
+msgstr "项目点评记录"
 
 #. module: investment_invitation_project
 #: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_view_form
 msgid "Project Followers"
-msgstr “项目关注人”
-
-#. module: investment_invitation_project
-#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_view_form
-msgid "Project Progress"
-msgstr “项目进度记录”
-
-#. module: investment_invitation_project
-#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_lexicon_explain_example_ids
-#: model:ir.ui.menu,name:investment_invitation_project.invest_project_status_menu
-msgid "Project Status"
-msgstr “项目成熟度”
-
-#. module: investment_invitation_project
-#: model:ir.ui.menu,name:investment_invitation_project.menu_invest_project_project
-msgid "Projects"
-msgstr “项目业务”
-
-#. module: investment_invitation_project
-#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_category_view_search
-#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_comment_view_search
-#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_status_view_search
-#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_view_search
-msgid "Search"
-msgstr “搜索”
-
-#. module: investment_invitation_project
-#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_sequence
-msgid "Sequence"
-msgstr “序号”
-
-#. module: investment_invitation_project
-#: model:ir.ui.menu,name:investment_invitation_project.menu_invest_project_setting
-msgid "Setting"
-msgstr “基本设置”
-
-#. module: investment_invitation_project
-#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_name
-msgid "Status"
-msgstr “项目成熟度”
-
-#. module: investment_invitation_project
-#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_total_invest
-msgid "Total Invest"
-msgstr “总投资”
+msgstr "项目关注人"
 
 #. module: investment_invitation_project
 #: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_manager_user_id
@@ -298,41 +282,95 @@ msgstr "项目负责人"
 
 #. module: investment_invitation_project
 #: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_view_form
+msgid "Project Progress"
+msgstr "项目进度记录"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_lexicon_explain_example_ids
+#: model:ir.ui.menu,name:investment_invitation_project.invest_project_status_menu
+msgid "Project Status"
+msgstr "项目成熟度"
+
+#. module: investment_invitation_project
+#: model:ir.ui.menu,name:investment_invitation_project.menu_invest_project_project
+msgid "Projects"
+msgstr "项目业务"
+
+#. module: investment_invitation_project
+#: model:ir.ui.view,arch_db:investment_invitation_project.invest_news_search
+#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_category_view_search
+#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_comment_view_search
+#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_status_view_search
+#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_view_search
+msgid "Search"
+msgstr "搜索"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_sequence
+msgid "Sequence"
+msgstr "序列"
+
+#. module: investment_invitation_project
+#: model:ir.ui.menu,name:investment_invitation_project.menu_invest_project_setting
+msgid "Setting"
+msgstr "基本设置"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_status_name
+msgid "Status"
+msgstr "状态"
+
+#. module: investment_invitation_project
+#: model:ir.model.fields,field_description:investment_invitation_project.field_invest_project_total_invest
+msgid "Total Invest"
+msgstr "总投资"
+
+#. module: investment_invitation_project
+#: model:ir.ui.view,arch_db:investment_invitation_project.invest_project_view_form
 msgid "images"
-msgstr “图片”
+msgstr "图片"
 
 #. module: investment_invitation_project
 #: model:ir.module.category,name:investment_invitation_project.module_invest_project
 msgid "invest project"
-msgstr “项目研判系统”
+msgstr "项目研判系统"
+
+#. module: investment_invitation_project
+#: model:ir.model,name:investment_invitation_project.model_invest_news
+msgid "invest.news"
+msgstr "invest.news"
+
+#. module: investment_invitation_project
+#: model:ir.actions.act_window,name:investment_invitation_project.invest_news_action
+msgid "invest_news_action"
+msgstr "最新产业政策"
 
 #. module: investment_invitation_project
 #: model:ir.actions.act_window,name:investment_invitation_project.invest_project_action
 msgid "invest_project_action"
-msgstr “项目”
+msgstr "项目"
 
 #. module: investment_invitation_project
 #: model:ir.actions.act_window,name:investment_invitation_project.invest_project_category_action
 msgid "invest_project_category_action"
-msgstr “项目类型”
+msgstr "项目类型"
 
 #. module: investment_invitation_project
 #: model:ir.actions.act_window,name:investment_invitation_project.invest_project_comment_action
 msgid "invest_project_comment_action"
-msgstr “项目点评”
+msgstr "项目点评"
 
 #. module: investment_invitation_project
 #: model:res.groups,name:investment_invitation_project.group_invest_project_common_user
 msgid "invest_project_common_user"
-msgstr “项目研判系统普通用户”
+msgstr "项目研判系统普通用户"
 
 #. module: investment_invitation_project
 #: model:res.groups,name:investment_invitation_project.group_invest_project_manager
 msgid "invest_project_manager"
-msgstr "项目研判系统普管理员”
+msgstr "项目研判系统普管理员"
 
 #. module: investment_invitation_project
 #: model:ir.actions.act_window,name:investment_invitation_project.invest_project_status_action
 msgid "invest_project_status_action"
-msgstr “项目成熟度”
-
+msgstr "项目成熟度"

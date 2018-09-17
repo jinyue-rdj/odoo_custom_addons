@@ -4,6 +4,7 @@
         <menuitem id='menu_invest_project' name='Investment Project' sequence="100" groups="group_invest_project_manager" />
         <menuitem id="menu_invest_project_setting" name="Setting" parent="menu_invest_project"  sequence="10" />
         <menuitem id="menu_invest_project_project" name="Projects" parent="menu_invest_project"  sequence="20" />
+        <menuitem id="menu_invest_news" name="News" parent="menu_invest_project"  sequence="30" />
 
         <!--view list for status-->
         <record id="invest_project_status_view_tree" model="ir.ui.view">
@@ -279,4 +280,60 @@
 
         <menuitem name="Comments" parent="menu_invest_project_project" id="invest_project_comment_menu" action="invest_project_comment_action" sequence="2"/>
 
+        <!-- invest news -->
+        <record id="invest_news_list" model="ir.ui.view">
+            <field name="name">invest_news_list</field>
+            <field name="model">invest.news</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="title"></field>
+                    <field name="is_publish"></field>
+                    <field name="content"></field>
+                </tree>
+            </field>
+        </record>
+
+        <record id="invest_news_form" model="ir.ui.view">
+                <field name="name">invest_news_form</field>
+                <field name="model">invest.news</field>
+                <field name="arch" type="xml">
+                    <form class="oe_form_nomargin o_note_form_view">
+                        <sheet>
+                            <group>
+                                <group>
+                                    <field name="title"></field>
+                                </group>
+                                <group>
+                                    <field name="is_publish"></field>
+                                </group>
+                            </group>
+                            <label for="content"></label>
+                            <field name="content" widget="html" class="oe_memo" editor_height="450px" />
+                        </sheet>
+                    </form>
+                </field>
+        </record>
+
+        <record id="invest_news_search" model="ir.ui.view">
+            <field name="name">invest_news_search</field>
+            <field name="model">invest.news</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="title" filter_domain="[('title', 'like', self)]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="invest_news_action" model="ir.actions.act_window">
+            <field name="name">invest_news_action</field>
+            <field name="res_model">invest.news</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to create a invest news.
+            </p>
+            </field>
+        </record>
+
+        <menuitem name="News" parent="menu_invest_news" id="invest_news_menu" action="invest_news_action" sequence="2"/>
 </odoo>
