@@ -1,10 +1,12 @@
 
 from odoo import fields, models, api, _
-from bs4 import BeautifulSoup
 from openerp.http import request
 from odoo.fields import Datetime
+import datetime
+from datetime import timedelta
 import werkzeug
 import requests
+from odoo import tools
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -133,6 +135,29 @@ class InvestProject(models.Model):
         if not project:
             value = [(4, user_id, 0)]
             project.write({'follower_member_ids': value})
+
+    def get_project_list_by_month_or_week(self, page_index, page_size, week_or_month):
+        offset = (page_index-1) * page_size
+        if week_or_month == 'w':
+            start, end = self._get_current_week_start_and()
+        else:
+            start, end = self._get_current_month_start_and()
+        start_str = datetime.datetime.strftime(start, tools.DEFAULT_SERVER_DATETIME_FORMAT)
+        end_str = datetime.datetime.strftime(start, tools.DEFAULT_SERVER_DATETIME_FORMAT)
+        domain = [('is_published', '=', True), ('create_date', '>=', start_str), ('create_date', '<=', end_str)]
+        return self.get_project_detail(domain, offset, page_size)
+
+    def _get_current_month_start_and(self):
+        now = datetime.datetime.now()
+        this_month_start = datetime.datetime(now.year, now.month, 1)
+        this_month_end = datetime.datetime(now.year, now.month + 1, 1) - timedelta(days=1)
+        return this_month_start, this_month_end
+
+    def _get_current_week_start_and(self):
+        now = datetime.datetime.now()
+        this_week_start = now - timedelta(days=now.weekday())
+        this_week_end = now + timedelta(days=6 - now.weekday())
+        return this_week_start, this_week_end
 
 
 class InvestProjectProgress(models.Model):

@@ -59,3 +59,13 @@ class WechatProjectController(http.Controller):
             result = {'is_success': False, 'info': tools.ustr(e)}
         return result
 
+    @http.route('/api/v2/wechat_month_or_week_projects', type='json', auth="user")
+    def wechat_get_my_projects(self, page_index, page_size, month_or_week, **kw):
+        result = {'is_success': True}
+        try:
+            data = request.env['invest.project'].sudo().get_project_list_by_month_or_week(page_index, page_size, month_or_week)
+            result['data'] = data
+        except Exception as e:
+            result = {'is_success': False, 'info': tools.ustr(e)}
+        return result
+
