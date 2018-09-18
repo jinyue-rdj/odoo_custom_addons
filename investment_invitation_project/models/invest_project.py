@@ -134,7 +134,8 @@ class InvestProject(models.Model):
         project = self.search([('id', '=', project_id), ('follower_member_ids', '=', user_id)], limit=1)
         if not project:
             value = [(4, user_id, 0)]
-            project.write({'follower_member_ids': value})
+            target_project = self.search([('id', '=', project_id)], limit=1)
+            target_project.write({'follower_member_ids': value})
 
     def get_project_list_by_month_or_week(self, page_index, page_size, week_or_month):
         offset = (page_index-1) * page_size
