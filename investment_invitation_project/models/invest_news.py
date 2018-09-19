@@ -18,7 +18,7 @@ class InvestNews(models.Model):
         result = {}
         detail = self.search([("id", "=", news_id)])
         if detail:
-            result['id'] = id,
+            result['id'] = news_detail.id,
             result['news_detail'] = detail.content,
             result['title'] = detail.title
         return result

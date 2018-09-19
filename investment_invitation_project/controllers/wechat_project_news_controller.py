@@ -16,3 +16,14 @@ class WechatProjectViewController(http.Controller):
         except Exception as e:
             result = {'is_success': False, 'info': tools.ustr(e)}
         return result
+
+    @http.route('/api/v2/wechat_project_news_detail', type='json', auth="user", sitemap=False)
+    def get_news_detail(self, news_id, **kw):
+        result = {}
+        result['is_success'] = True
+        try:
+            detail = request.env['invest.news'].sudo().get_news_detail(news_id)
+            result['news_detail'] = detail
+        except Exception as e:
+            result = {'is_success': False, 'info': tools.ustr(e)}
+        return result
