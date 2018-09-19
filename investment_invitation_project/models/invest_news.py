@@ -19,6 +19,13 @@ class InvestNews(models.Model):
         return detail
 
     def get_news_list_page(self, page_index, page_size):
+        result = []
         offset = (int(page_index) - 1) * int(page_size)
+        domain = [("is_publish", "=", True)]
         list = self.search(domain, offset=offset, limit=page_size, order='create_date desc')
-        return list
+        for l in list:
+            item["title"] = l.title
+            item["content"] = l.content
+            item["create_date"] = l.create_date
+            result.append(item)
+        return result
