@@ -15,8 +15,13 @@ class InvestNews(models.Model):
     is_publish = fields.Boolean(string="Is Publish")
 
     def get_news_detail(self, news_id):
+        result = {}
         detail = self.search([("id", "=", news_id)])
-        return detail
+        if detail:
+            result['id'] = id,
+            result['news_detail'] = detail.content,
+            result['title'] = detail.title
+        return result
 
     def get_news_list_page(self, page_index, page_size):
         result = []
@@ -25,6 +30,7 @@ class InvestNews(models.Model):
         list = self.search(domain, offset=offset, limit=page_size, order='create_date desc')
         for l in list:
             item = {}
+            item["id"] = l.id
             item["title"] = l.title
             item["content"] = l.content
             item["create_date"] = l.create_date
