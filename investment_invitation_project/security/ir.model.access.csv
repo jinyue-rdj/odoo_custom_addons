@@ -3,3 +3,4 @@
 "access_invest_project_m","invest_project_m","model_invest_project","group_invest_project_manager",1,1,1,1
 "access_invest_project_comment_m","invest_project_comment_m","model_invest_project_comment","group_invest_project_manager",1,1,1,1
 "access_invest_project_category_m","invest_project_category_m","model_invest_project_category","group_invest_project_manager",1,1,1,1
+"access_invest_news_m","invest_news_m","model_invest_news","group_invest_project_manager",1,1,1,1
