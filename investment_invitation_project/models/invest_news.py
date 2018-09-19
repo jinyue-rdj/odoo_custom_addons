@@ -24,6 +24,7 @@ class InvestNews(models.Model):
         domain = [("is_publish", "=", True)]
         list = self.search(domain, offset=offset, limit=page_size, order='create_date desc')
         for l in list:
+            item = {}
             item["title"] = l.title
             item["content"] = l.content
             item["create_date"] = l.create_date

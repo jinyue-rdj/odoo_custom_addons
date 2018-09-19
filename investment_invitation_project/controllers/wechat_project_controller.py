@@ -37,7 +37,7 @@ class WechatProjectController(http.Controller):
             result = {'is_success': False, 'info': tools.ustr(e)}
         return result
 
-    @http.route('/api/v2/wechat_my_follow_projects', type='json', auth="user")
+    @http.route('/api/v2/wprojects', type='json', auth="user")
     def wechat_get_my_follow_projects(self, page_index, page_size, **kw):
         user_id = request.env.user.id
         result = {'is_success': True}

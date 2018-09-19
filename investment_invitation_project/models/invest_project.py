@@ -138,13 +138,16 @@ class InvestProject(models.Model):
             target_project.write({'follower_member_ids': value})
 
     def get_project_list_by_month_or_week(self, page_index, page_size, week_or_month):
+        import pdb; pdb.set_trace()
         offset = (page_index-1) * page_size
         if week_or_month == 'w':
             start, end = self._get_current_week_start_and()
         else:
             start, end = self._get_current_month_start_and()
-        start_str = datetime.datetime.strftime(start, tools.DEFAULT_SERVER_DATETIME_FORMAT)
-        end_str = datetime.datetime.strftime(start, tools.DEFAULT_SERVER_DATETIME_FORMAT)
+        #start_str = datetime.datetime.strftime(start, tools.DEFAULT_SERVER_DATETIME_FORMAT)
+        #end_str = datetime.datetime.strftime(start, tools.DEFAULT_SERVER_DATETIME_FORMAT)
+        start_str = fields.Datetime.to_string(start)
+        end_str = fields.Datetime.to_string(end)
         domain = [('is_published', '=', True), ('create_date', '>=', start_str), ('create_date', '<=', end_str)]
         return self.get_project_detail(domain, offset, page_size)
 
