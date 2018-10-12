@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo>
+    <data noupdate="1">
+        <record id="WECHAT_PUBLIC_ACCOUNT_TOKEN_ID" model="ir.config_parameter">
+            <field name="key">WECHAT_PUBLIC_ACCOUNT_TOKEN</field>
+            <field name="value">guoodoo</field>
+        </record>
+    </data>
+</odoo>
