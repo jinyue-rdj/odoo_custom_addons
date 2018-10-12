@@ -15,7 +15,7 @@ class WeChatPublicAccountAuth(http.Controller):
 
     @http.route('/wechat_public_account_auth/validate', type='http', auth="none", methods=["GET"])
     def validate_auth(self, signature, timestamp, nonce, echostr, **kw):
-        token = "guoodoo786723867"  # 请按照公众平台官网\基本配置中信息填写
+        token = "guoodoo"  # 请按照公众平台官网\基本配置中信息填写
         list = [token, timestamp, nonce]
         list_data = []
         for data in list:
