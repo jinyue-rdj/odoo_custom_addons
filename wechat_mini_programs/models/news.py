@@ -3,7 +3,7 @@
 import logging
 
 from odoo import models, fields, api, _
-
+from openerp.http import request
 _logger = logging.getLogger(__name__)
 
 
@@ -55,7 +55,9 @@ class News(models.Model):
     def get_list(self):
         result = {}
         result['is_success'] = True
-        sql = """SELECT A.id, A.title, A.is_banner, A.category_id, to_char(A.create_date,'yyyy-mm-dd') create_date,B.Name,C.url
+        url = self.get_image_url()
+        sql = """SELECT A.id, A.title, A.is_banner, A.category_id, to_char(A.create_date,'yyyy-mm-dd') create_date,B.Name,
+                 '%s' || cast(C.Id as Text) url
                               FROM news A left join news_category B 
                               on A.category_id = B.id 
                               left join ir_attachment C 
@@ -65,9 +67,9 @@ class News(models.Model):
                               and C.res_model='%s' 
                               order by A.create_date desc
                               limit %d
-                      """
-        banner_sql = sql % ("true", "news", 5)
-        news_sql = sql % ("false", "news", 10)
+              """
+        banner_sql = sql % (url, "true", "news", 5)
+        news_sql = sql % (url, "false", "news", 10)
         self.env.cr.execute(banner_sql)
         result['banner_list'] = self.env.cr.dictfetchall()
         self.env.cr.execute(news_sql)
@@ -78,17 +80,19 @@ class News(models.Model):
         result = {}
         result['is_success'] = True
         offset = (int(page_index) - 1) * int(page_size)
-        sql = """SELECT A.id, A.title, A.is_banner, A.category_id, to_char(A.create_date,'yyyy-mm-dd') create_date,B.Name,C.url
-                              FROM news A left join news_category B 
-                              on A.category_id = B.id 
-                              left join ir_attachment C 
-                              on A.id  =  C.res_id 
-                              where A.is_publish = true 
-                              and C.res_model='%s' 
-                              order by A.create_date desc
-                              limit %s offset %d
-                      """
-        news_sql = sql % ("news", page_size, offset)
+        url = self.get_image_url()
+        sql = """SELECT A.id, A.title, A.is_banner, A.category_id, to_char(A.create_date,'yyyy-mm-dd') create_date,B.Name
+                 ,'%s' || cast(C.Id as Text) url
+                  FROM news A left join news_category B 
+                  on A.category_id = B.id 
+                  left join ir_attachment C 
+                  on A.id  =  C.res_id 
+                  where A.is_publish = true 
+                  and C.res_model='%s' 
+                  order by A.create_date desc
+                  limit %s offset %d
+              """
+        news_sql = sql % (url, "news", page_size, offset)
         self.env.cr.execute(news_sql)
         result['news_list'] = self.env.cr.dictfetchall()
         return result
@@ -117,3 +121,6 @@ class News(models.Model):
         self.env.cr.execute(special_sql)
         result['second_list'] = self.env.cr.dictfetchall()
         return result
+
+    def get_image_url(self):
+        return request.httprequest.url_root + "web/image/"
