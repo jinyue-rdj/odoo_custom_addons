@@ -276,10 +276,11 @@ class EnglishLexiconUserMaster(models.Model):
             self.create({'english_lexicon_id': word_id, 'user_id': user_id, 'level_id': level_id})
 
     def get_my_level_words(self, level_id, user_id, page_index, page_size):
+        import pdb; pdb.set_trace()
         result_list = []
         offset = (page_index - 1) * page_size
         domain = [("level_id", "=", level_id), ("user_id", "=", user_id)]
-        my_words = self.search(domain, offset=offset, limit=page_size, order="create_date desc")
+        my_words = self.search(domain, offset=offset, limit=page_size, order="english_lexicon_id.create_date desc")
         word_lexicon = self.env["english.lexicon"]
         for word_level in my_words:
             word = word_level.english_lexicon_id
